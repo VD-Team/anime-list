@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { GeneralModule } from './general';
+import { AnimeListComponent } from './anime-list/anime-list.component';
+import { AnimeCardComponent } from './anime-card/anime-card.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AnimeListComponent,
+    AnimeCardComponent
   ],
   imports: [
     BrowserModule,
