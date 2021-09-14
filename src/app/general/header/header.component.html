@@ -4,7 +4,7 @@
         <button id="bperfil" (click)="buttonClicked('Perfil')" [style] = "bperfilStyle">Perfil</button>
         <button id="bfavoritos" (click)="buttonClicked('Favoritos')" [style] = "bfavoritosStyle">Favoritos</button>
     </div>
-    <div class="search" [hidden] = "bsearchHidden">
+    <div class="search" [style] = "bsearchStyle">
         <button onclick="console.log('Clicked')">
             <img [src] = "searchIconPath" alt="icone de pesquisa">
         </button>

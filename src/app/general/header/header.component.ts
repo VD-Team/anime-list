@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   bhomeStyle = this.buttonSelected
   bperfilStyle = this.buttonUnselected
   bfavoritosStyle = this.buttonUnselected
-  bsearchHidden = false
+  bsearchStyle = ''
   searchIconPath = 'assets/search-icon.png'
 
   constructor() { }
@@ -34,15 +34,15 @@ export class HeaderComponent implements OnInit {
     switch (button) {
       case Button.Home:
         this.bhomeStyle = this.buttonSelected
-        this.bsearchHidden = false
+        this.bsearchStyle = ''
         break;
       case Button.Perfil:
         this.bperfilStyle = this.buttonSelected
-        this.bsearchHidden = true
+        this.bsearchStyle = 'display: none;'
         break;
       case Button.Favoritos:
         this.bfavoritosStyle = this.buttonSelected
-        this.bsearchHidden = false
+        this.bsearchStyle = ''
     }
   }
 }

@@ -28,3 +28,59 @@ img {
     height: 1.5rem;
     width: 1.5rem;
 }
+
+@media screen and (max-width: 800px) {
+    .buttons button {
+        margin-right: 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    header {
+        padding: 3rem 2rem 1rem 2rem;
+    }
+    
+    .buttons button {
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+    header {
+        height: 10rem;
+        padding: 2rem 1.5rem 0 1.5rem;
+    }
+
+    .buttons button {
+        display: flex;
+        width: 12rem;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    header {
+        height: 12rem;
+        padding: 2rem 2rem 1rem 2rem;
+        display: block;
+    }
+    
+    .buttons {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .buttons button {
+        margin: 0 0 0.5rem 0;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .search {
+        display: flex;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
