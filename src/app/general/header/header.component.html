@@ -1,1 +1,12 @@
-<p>header works!</p>
+<header>
+    <div class="buttons">
+        <button id="bhome" (click)="buttonClicked('Home')" [style] = "bhomeStyle">Home</button>
+        <button id="bperfil" (click)="buttonClicked('Perfil')" [style] = "bperfilStyle">Perfil</button>
+        <button id="bfavoritos" (click)="buttonClicked('Favoritos')" [style] = "bfavoritosStyle">Favoritos</button>
+    </div>
+    <div class="search" [hidden] = "bsearchHidden">
+        <button onclick="console.log('Clicked')">
+            <img [src] = "searchIconPath" alt="icone de pesquisa">
+        </button>
+    </div>
+</header>

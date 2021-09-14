@@ -1,0 +1,30 @@
+header {
+    height: 2.5rem;
+    padding: 4rem 3rem 1rem 3rem;
+    display: flex;
+
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2A4760;
+    color: white;
+}
+
+button {
+    font-size: 1rem;
+    text-decoration: none;
+    background: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    border-radius: 0.4rem;
+    border: none;
+    color: white;
+}
+
+.buttons button {
+    margin-right: 6rem;
+}
+
+img {
+    height: 1.5rem;
+    width: 1.5rem;
+}
