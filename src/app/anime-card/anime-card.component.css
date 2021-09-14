@@ -1,0 +1,46 @@
+.anime-card{
+  position: relative;
+  bottom: 8px;
+  left: 10px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.anime-card__name{
+  color: #F4F4F4;
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: Arial;
+}
+
+.anime-card__image img{
+  border-radius: 10px;
+  object-fit: cover;
+  width: 175px;
+  height: 250px;
+}
+
+.anime-card__ranked{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #FF434D;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration-color: #FF434D;
+}
+
+.anime-card__backgroundName{
+  position: absolute;
+  background-color: #2A4760;
+  opacity: 80%;
+  height: 70px;
+  width: 175px;
+  top: 35%;
+  left: 50%;
+  border-radius: 0 0 10px 10px;
+  transform: translate(-50%, 130%);
+}
