@@ -30,22 +30,6 @@ img {
     height: 2rem;
 }
 
-@media screen and (max-width: 350px) {
-    a {
-        margin-left: 0.8rem;
-    }
-
-    footer {
-        height: 5rem;
-        padding: 1rem 1rem 1rem 1rem;
-        display: block;
-    }
-
-    #copyright {
-        margin-bottom: 1rem;
-    }
-}
-
 @media screen and (max-width: 450px) {
     a {
         margin-left: 0.8rem;
@@ -58,5 +42,22 @@ img {
 
     #copyright {
         margin-bottom: 0rem;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    a {
+        margin-left: 0.8rem;
+    }
+
+    footer {
+        width: 100%;
+        height: 6rem;
+        padding: 1rem 1rem 1rem 1rem;
+        display: block;
+    }
+
+    #copyright {
+        margin-bottom: 1rem;
     }
 }
