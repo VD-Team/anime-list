@@ -16,7 +16,12 @@ export class PageHomeComponent implements OnInit {
   }
 
   async searchAnimes(): Promise<void> {
-    
+    const response = await fetch('https://api.jikan.moe/v3/search/anime?q=type=TV&page=1');
+    const myJson = await response.json();
+
+    for (const animeResult of myJson.results) {
+      this.animes.push(new Anime(animeResult.title, animeResult.image_url))
+    }
   }
 }
 
