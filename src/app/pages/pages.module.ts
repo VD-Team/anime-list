@@ -5,12 +5,14 @@ import { PageHomeComponent } from './page-home';
 import { AnimesModule } from '../animes';
 import { PagePerfilComponent } from './page-perfil';
 import { PageFavoritosComponent } from './page-favoritos';
+import { PageNotFoundComponent } from './page-not-found';
 
 @NgModule({
   declarations: [
     PageHomeComponent,
     PagePerfilComponent,
-    PageFavoritosComponent
+    PageFavoritosComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
