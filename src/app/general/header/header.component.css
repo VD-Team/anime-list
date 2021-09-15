@@ -13,6 +13,7 @@ header {
 button {
     font-size: 1rem;
     text-decoration: none;
+    font-weight: bold;
     background: none;
     padding: 0.5rem 1rem 0.5rem 1rem;
     border-radius: 0.4rem;
@@ -39,14 +40,14 @@ img {
     header {
         padding: 3rem 2rem 1rem 2rem;
     }
-    
+
     .buttons button {
         margin-right: 1rem;
     }
 }
 
 @media screen and (max-width: 500px) {
-    
+
     header {
         height: 10rem;
         padding: 2rem 1.5rem 0 1.5rem;
@@ -65,7 +66,7 @@ img {
         padding: 2rem 2rem 1rem 2rem;
         display: block;
     }
-    
+
     .buttons {
         width: 100%;
         padding: 0;
@@ -77,7 +78,7 @@ img {
         width: 100%;
         justify-content: center;
     }
-    
+
     .search {
         display: flex;
         width: 100%;
