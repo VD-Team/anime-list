@@ -4,11 +4,13 @@ import { GeneralModule } from '../general';
 import { PageHomeComponent } from './page-home';
 import { AnimesModule } from '../animes';
 import { PagePerfilComponent } from './page-perfil';
+import { PageFavoritosComponent } from './page-favoritos';
 
 @NgModule({
   declarations: [
     PageHomeComponent,
-    PagePerfilComponent
+    PagePerfilComponent,
+    PageFavoritosComponent
   ],
   imports: [
     CommonModule,
