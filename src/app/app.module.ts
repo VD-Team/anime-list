@@ -3,18 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { GeneralModule } from './general';
-import { AnimeListComponent } from './anime-list/anime-list.component';
-import { AnimeCardComponent } from './anime-card/anime-card.component';
+import { AnimesModule } from './animes/animes.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AnimeListComponent,
-    AnimeCardComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    GeneralModule
+    GeneralModule,
+    AnimesModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
