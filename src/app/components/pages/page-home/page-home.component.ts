@@ -7,9 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageHomeComponent implements OnInit {
 
+  animes: Anime[] = []
+
   constructor() { }
 
   ngOnInit(): void {
+    this.searchAnimes()
   }
 
+  async searchAnimes(): Promise<void> {
+    
+  }
+}
+
+class Anime {
+
+  title: string
+  image_url: string
+
+  constructor(title: string, image_url: string) {
+    this.title = title
+    this.image_url = image_url
+  }
 }
