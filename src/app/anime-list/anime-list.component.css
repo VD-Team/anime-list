@@ -3,3 +3,8 @@
   padding: 50px 50px 50px 50px;
   flex-wrap: wrap;
 }
+
+div{
+  display: flex;
+  justify-content: space-between;
+}
