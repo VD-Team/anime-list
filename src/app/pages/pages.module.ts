@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { GeneralModule } from '../general';
-import { PageHomeComponent } from './page-home';
-import { AnimesModule } from '../animes';
-import { PagePerfilComponent } from './page-perfil';
-import { PageFavoritosComponent } from './page-favoritos';
-import { PageNotFoundComponent } from './page-not-found';
+import { GeneralModule } from '../general/general.module';
+import { PageHomeComponent } from './page-home/page-home.component';
+import { PagePerfilComponent } from './page-perfil/page-perfil.component';
+import { PageFavoritosComponent } from './page-favoritos/page-favoritos.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,7 @@ import { PageNotFoundComponent } from './page-not-found';
   ],
   imports: [
     CommonModule,
-    GeneralModule,
-    AnimesModule
+    GeneralModule
   ],
   exports: [
     PageHomeComponent

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AnimeCardComponent } from './anime-card';
-import { AnimeListComponent } from './anime-list';
+import { AnimeCardComponent } from './anime-card/anime-card.component';
+import { AnimeListComponent } from './anime-list/anime-list.component';
 
 @NgModule({
   declarations: [
