@@ -57,9 +57,9 @@
       </div>
     </div>
   </div>
-  <div class="page-info-anime__Trailer">
+  <div class="page-info-anime__Trailer" [hidden]="!hasTrailer">
     <p>Trailer</p>
-    <iframe src="{{videoUrl}}"></iframe>
+    <iframe width="100%" height="500" [src]="anime?.trailer_url"></iframe>
   </div>
 </div>
 <app-footer></app-footer>

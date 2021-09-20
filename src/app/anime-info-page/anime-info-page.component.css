@@ -6,6 +6,7 @@
   color: #63788F;
   font-family: Arial, serif;
   font-size: 17px;
+  min-height: 85vh;
 }
 
 
@@ -32,7 +33,7 @@
 /* SINOPSE */
 
 .page-info-anime__synopsisGroup{
-  padding: 0 70px 0 15px;
+  padding: 0 70px 3rem 15px;
 }
 
 .page-info-anime__synopsisTitle{

@@ -11,17 +11,10 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
 
   anime: Anime | undefined
   id: number | undefined
+  hasTrailer: boolean = false
   private sub: any;
 
-  dangerousUrl: string
-  //URL DO VÍDEO
-  videoUrl: SafeResourceUrl
-
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {
-    this.dangerousUrl = 'https://www.youtube.com/embed/qig4KOK2R2g?enablejsapi=1&wmode=opaque&autoplay=1'
-    //CONVERSÃO DA URL PARA UMA URL SEGURA DE ACOROD COM OS PADRÕES DO ANGULAR
-    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousUrl)
-  }
+  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.searchAnime()
@@ -38,7 +31,8 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
 
     const response = await fetch(`https://api.jikan.moe/v3/anime/${this.id}`);
     const myJson = await response.json();
-    this.anime = new Anime(myJson)
+    this.anime = new Anime(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url))
+    this.hasTrailer = myJson.trailer_url == null ? false:true
     console.log(myJson.aired)
     console.log(this.anime)
   }
@@ -55,14 +49,14 @@ class Anime {
   rank: number
   score: number
   title: string
-  trailer_url: string
+  trailer_url: SafeResourceUrl
   image_url: string
   synopsis: string
 
   genresToString: [string] = [""]
   status: string
 
-  constructor(json: any) {
+  constructor(json: any, trailer_url: SafeResourceUrl) {
     this.airing = json.airing
     this.title = json.title
     this.image_url = json.image_url
@@ -76,6 +70,7 @@ class Anime {
     this.score = json.score
     this.popularity = json.popularity
     this.rank = json.rank
+    this.trailer_url = trailer_url
     this.parseGenres()
   }
 
