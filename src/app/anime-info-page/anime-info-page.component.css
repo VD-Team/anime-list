@@ -3,15 +3,17 @@
 .page-info-anime{
   flex-wrap: wrap;
   alignment: left;
+  background-color: #F4F4F4;
   color: #63788F;
   font-family: Arial, serif;
-  font-size: 17px;
+  font-size: 15px;
   min-height: 85vh;
 }
 
 
 .page-info-anime__all{
   display: flex;
+  background-color: #FFFFFF;
   padding: 40px 0 15px 40px;
 }
 
@@ -34,12 +36,17 @@
 
 .page-info-anime__synopsisGroup{
   padding: 0 70px 3rem 15px;
+  background-color: #FFFFFF;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 7px;
 }
 
 .page-info-anime__synopsisTitle{
   padding-bottom: 25px;
   font-size: 25px;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 .page-info-anime__synopsis{
@@ -51,17 +58,20 @@
 
 /* TRAILER */
 
+.page-info-anime__Trailer{
+  margin-left: 40px;
+  margin-bottom: 40px;
+}
+
 .page-info-anime__Trailer p{
-  padding: 0 0 0 40px;
   font-size: 25px;
   font-weight: bold;
 }
 
 .page-info-anime__Trailer iframe{
-  padding: 20px;
-  margin: 0 0 40px 40px;
-  width: 90%;
-  height: 650px;
+  width: 95%;
+  height: 690px;
+  padding-bottom: 40px;
 }
 
 /*---------------------*/
@@ -122,11 +132,22 @@ margin-left: 8px;
   margin-left: 8px;
 }
 
+.page-info-anime__card-other-infos{
+  width: 240px;
+  color: #63788F;
+  background-color: #FFFFFF;
+  padding: 1px 5px;
+  margin-left: 40px;
+  margin-top: 10px;
+  border-radius: 7px;
+}
+
 /*---------------------*/
 
 /* SINOPSE+CARDS */
 
 .page-info-anime__synopsis-cards{
+  padding-top: 20px;
   display: flex;
 }
 

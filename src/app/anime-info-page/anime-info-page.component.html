@@ -7,7 +7,7 @@
 
     <div class="page-info-anime__information">
       <div class="page-info-anime__title">
-        {{anime?.title}}
+        {{(anime?.title)?.toUpperCase()}}
       </div>
 
       <div class="page-info-anime__genres">
@@ -47,6 +47,16 @@
         <p class="page-info-anime__ratedCard-number">#{{anime?.popularity}}</p>
         <p class="page-info-anime__ratedCard-string">Highest Rated All Time</p>
       </div>
+      <div class="page-info-anime__card-other-infos">
+        <h4>Formato</h4>
+        <p>{{anime?.type}}</p>
+        <h4>Estúdios</h4>
+        <p>{{(anime?.studiosToString)?.join(', ')}}</p>
+        <h4>Título em Inglês</h4>
+        <p>{{anime?.title_english}}</p>
+        <h4>Título em Japonês</h4>
+        <p>{{anime?.title_japanese}}</p>
+      </div>
     </div>
     <div class="page-info-anime__synopsisGroup">
       <div class="page-info-anime__synopsisTitle">
@@ -59,7 +69,7 @@
   </div>
   <div class="page-info-anime__Trailer" [hidden]="!hasTrailer">
     <p>Trailer</p>
-    <iframe width="100%" height="500" [src]="anime?.trailer_url"></iframe>
+    <iframe frameborder="0" allowfullscreen [src]="anime?.trailer_url"></iframe>
   </div>
 </div>
 <app-footer></app-footer>

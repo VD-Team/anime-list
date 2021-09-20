@@ -34,9 +34,7 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
       this.router.navigate(['**']);
     }
     this.anime = new Anime(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url))
-    this.hasTrailer = myJson.trailer_url == null ? false:true
-    console.log(myJson.aired)
-    console.log(this.anime)
+    this.hasTrailer = myJson.trailer_url != null
   }
 }
 
@@ -53,9 +51,14 @@ class Anime {
   title: string
   trailer_url: SafeResourceUrl
   image_url: string
+  studios: [Studio]
   synopsis: string
+  type: string
+  title_english: string
+  title_japanese: string
 
   genresToString: [string] = [""]
+  studiosToString: [string] = [""]
   status: string
 
   constructor(json: any, trailer_url: SafeResourceUrl) {
@@ -72,8 +75,32 @@ class Anime {
     this.score = json.score
     this.popularity = json.popularity
     this.rank = json.rank
+    this.studios = json.studios
+    this.title_english = json.title_english
+    this.title_japanese = json.title_japanese
+    this.type = json.type
     this.trailer_url = trailer_url
     this.parseGenres()
+    this.parseStudios()
+  }
+
+  parseStudios(){
+    let parsedStudios = [];
+
+    for (let i = 0; i < this.studios.length; i++) {
+      const newStudio = new Studio(this.studios[i].name)
+      parsedStudios.push(newStudio)
+    }
+    //ATRIBUI OS ESTUDIOS AO ARRAY PRINCIPAL DE ESTUDIOS
+    for (let i = 0; i < parsedStudios.length; i++) {
+      this.studios[i] = parsedStudios[i]
+    }
+    //REMOVE O PRIMEIRO ITEM DO ARRAY, QUE ATUALMENTE É ""
+    this.studiosToString.shift()
+    //PREENCHIMENTO DO ARRAY DE STRINGS DE ESTUDIOS
+    for (let i = 0; i < this.studios.length; i++) {
+      this.studiosToString.push(this.studios[i].name)
+    }
   }
 
   parseGenres(){
@@ -110,5 +137,13 @@ class Aired{
 
   constructor(string: string) {
     this.string = string
+  }
+}
+
+class Studio{
+  name: string
+
+  constructor(name: string) {
+    this.name = name
   }
 }
