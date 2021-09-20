@@ -14,7 +14,7 @@
 .page-info-anime__all{
   display: flex;
   background-color: #FFFFFF;
-  padding: 40px 0 15px 40px;
+  padding: 40px 0 15px 190px;
 }
 
 .page-info-anime__information{
@@ -35,10 +35,10 @@
 /* SINOPSE */
 
 .page-info-anime__synopsisGroup{
-  padding: 0 70px 3rem 15px;
+  padding: 0 190px 0 15px;
   background-color: #FFFFFF;
   margin-left: 10px;
-  margin-right: 10px;
+  margin-right: 190px;
   border-radius: 7px;
 }
 
@@ -59,7 +59,7 @@
 /* TRAILER */
 
 .page-info-anime__Trailer{
-  margin-left: 40px;
+  margin-left: 190px;
   margin-bottom: 40px;
 }
 
@@ -69,8 +69,8 @@
 }
 
 .page-info-anime__Trailer iframe{
-  width: 95%;
-  height: 690px;
+  width: 86%;
+  height: 590px;
   padding-bottom: 40px;
 }
 
@@ -84,7 +84,7 @@
   width: 240px;
   background-color: #07A0C3;
   padding: 1px 5px;
-  margin-left: 40px;
+  margin-left: 190px;
   margin-bottom: 8px;
   border-radius: 7px;
 }
@@ -112,7 +112,7 @@ margin-left: 8px;
   width: 240px;
   background-color: #FF434D;
   padding: 1px 5px;
-  margin-left: 40px;
+  margin-left: 190px;
   border-radius: 7px;
 }
 
@@ -137,7 +137,7 @@ margin-left: 8px;
   color: #63788F;
   background-color: #FFFFFF;
   padding: 1px 5px;
-  margin-left: 40px;
+  margin-left: 190px;
   margin-top: 10px;
   border-radius: 7px;
 }
