@@ -1,0 +1,46 @@
+.content {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 5rem;
+    color:#2A4760;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 0;
+}
+
+p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 4rem;
+    }
+    
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    h1 {
+        font-size: 3rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    p {
+        width: 10rem;
+    }
+}
