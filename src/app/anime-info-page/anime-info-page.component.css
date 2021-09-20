@@ -8,13 +8,13 @@
 
 .page-info-anime__all{
   display: flex;
-  padding: 20px;
+  padding: 40px 0 15px 40px;
 }
 
 .page-info-anime__information{
   display: inline-table;
-  border-spacing: 20px;
-  padding-bottom: 10px;
+  margin-left: 20px;
+  padding-bottom: 20px;
 }
 
 .page-info-anime__infoCards{
@@ -29,7 +29,7 @@
 /* SINOPSE */
 
 .page-info-anime__synopsisGroup{
-  padding: 0 20px 0 20px;
+  padding: 0 70px 0 15px;
 }
 
 .page-info-anime__synopsisTitle{
@@ -48,15 +48,16 @@
 /* TRAILER */
 
 .page-info-anime__Trailer p{
-  padding: 0 0 0 20px;
+  padding: 0 0 0 40px;
   font-size: 25px;
   font-weight: bold;
 }
 
 .page-info-anime__Trailer iframe{
   padding: 20px;
-  width: 70%;
-  height: 500px;
+  margin: 0 0 40px 40px;
+  width: 90%;
+  height: 650px;
 }
 
 /*---------------------*/
@@ -64,48 +65,62 @@
 /* ELEMENTOS INFO CARDS */
 
 .page-info-anime__popularCard{
+  position: relative;
   display: flex;
-  width: 245px;
+  width: 240px;
   background-color: #07A0C3;
   padding: 1px 5px;
-  margin-left: 20px;
+  margin-left: 40px;
   margin-bottom: 8px;
   border-radius: 7px;
 }
 
 .page-info-anime__popularCard img{
+  position: absolute;
+  top: 10px;
+  left: 10px;
   width: 22px;
   height: 22px;
   justify-content: center;
-  margin-right: 10px;
 }
 
-.page-info-anime__popularCard p{
-  margin-left: 3px;
+.page-info-anime__popularCard-number{
+  margin-left: 40px;
+}
+
+.page-info-anime__popularCard-string{
+margin-left: 8px;
 }
 
 .page-info-anime__ratedCard{
+  position: relative;
   display: flex;
-  width: 245px;
+  width: 240px;
   background-color: #FF434D;
   padding: 1px 5px;
-  margin-left: 20px;
+  margin-left: 40px;
   border-radius: 7px;
 }
 
 .page-info-anime__ratedCard img{
+  position: absolute;
+  top: 10px;
+  left: 10px;
   width: 22px;
   height: 22px;
-  margin-right: 10px;
 }
 
-.page-info-anime__ratedCard p{
-  margin-left: 3px;
+.page-info-anime__ratedCard-number{
+  margin-left: 40px;
+}
+
+.page-info-anime__ratedCard-string{
+  margin-left: 8px;
 }
 
 /*---------------------*/
 
-/* ELEMENTOS SEPARADOS */
+/* Sinopse+cards */
 
 .page-info-anime__synopsis-cards{
   display: flex;
