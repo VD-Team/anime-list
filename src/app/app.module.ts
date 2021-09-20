@@ -3,8 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AnimeCardComponent, FooterComponent, HeaderComponent, PageHomeComponent, PageNotFoundComponent } from './components';
+import { PageFavoritosComponent, PageHomeComponent, PageNotFoundComponent, PagePerfilComponent } from './components/pages';
 import { AnimeInfoPageComponent } from './anime-info-page/anime-info-page.component';
+import { FooterComponent, HeaderComponent } from './components/general';
+import { AnimeCardComponent } from './components/anime-card';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { AnimeInfoPageComponent } from './anime-info-page/anime-info-page.compon
     AnimeCardComponent,
     PageHomeComponent,
     PageNotFoundComponent,
-    AnimeInfoPageComponent
+    AnimeInfoPageComponent,
+    PagePerfilComponent,
+    PageFavoritosComponent
   ],
   imports: [
     BrowserModule,
