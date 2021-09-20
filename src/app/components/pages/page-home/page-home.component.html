@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [button]="'home'" [hasSearch]="true"></app-header>
 <div class="content">
     <div class="cards">
         <app-anime-card *ngFor="let anime of animes" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>

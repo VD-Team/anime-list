@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 enum Button {
-  Home = 'Home',
-  Perfil = 'Perfil',
-  Favoritos = 'Favoritos'
+  Home = 'home',
+  Perfil = 'perfil',
+  Favoritos = 'favoritos',
+  None = 'null'
 }
 
 @Component({
@@ -15,34 +16,31 @@ export class HeaderComponent implements OnInit {
   private buttonSelected = 'background-color: #FF434D;'
   private buttonUnselected = 'background-color: unset;'
 
-  bhomeStyle = this.buttonSelected
+  bhomeStyle = this.buttonUnselected
   bperfilStyle = this.buttonUnselected
   bfavoritosStyle = this.buttonUnselected
   bsearchStyle = ''
   searchIconPath = 'assets/search-icon.png'
+  @Input()
+  button: string = Button.None.toString()
+  @Input()
+  hasSearch: boolean = false
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  buttonClicked(button: string): void {
-    this.bhomeStyle = this.buttonUnselected
-    this.bperfilStyle = this.buttonUnselected
-    this.bfavoritosStyle = this.buttonUnselected
-
-    switch (button) {
-      case Button.Home:
+    switch (this.button) {
+      case Button.Home.toString():
         this.bhomeStyle = this.buttonSelected
-        this.bsearchStyle = ''
         break;
-      case Button.Perfil:
+      case Button.Perfil.toString():
         this.bperfilStyle = this.buttonSelected
-        this.bsearchStyle = 'display: none;'
         break;
-      case Button.Favoritos:
+      case Button.Favoritos.toString():
         this.bfavoritosStyle = this.buttonSelected
-        this.bsearchStyle = ''
+    }
+    if(!this.hasSearch) {
+      this.bsearchStyle = 'display: none;'
     }
   }
 }
