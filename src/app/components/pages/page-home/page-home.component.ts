@@ -20,7 +20,7 @@ export class PageHomeComponent implements OnInit {
     const myJson = await response.json();
 
     for (const animeResult of myJson.results) {
-      this.animes.push(new Anime(animeResult.title, animeResult.image_url, animeResult.score))
+      this.animes.push(new Anime(animeResult))
     }
   }
 }
@@ -30,10 +30,12 @@ class Anime {
   title: string
   image_url: string
   score: number
+  id: number
 
-  constructor(title: string, image_url: string, score: number) {
-    this.title = title
-    this.image_url = image_url
-    this.score = score
+  constructor(json: any) {
+    this.title = json.title
+    this.image_url = json.image_url
+    this.score = json.score
+    this.id = json.mal_id
   }
 }

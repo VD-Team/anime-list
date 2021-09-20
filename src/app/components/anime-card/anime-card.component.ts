@@ -15,13 +15,19 @@ export class AnimeCardComponent implements OnInit {
   score: Number | undefined
   @Input()
   synopsis: String | undefined
+  @Input()
+  animeId: number | undefined
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  goToPage(name: string, id: number): void{
-    this.router.navigate([`${name}`]);
+  goToPage(name: string): void{
+    if(this.animeId) {
+      this.router.navigate([`${name}`, this.animeId]);
+    } else {
+      console.log("Erro")
+    }
   }
 }
