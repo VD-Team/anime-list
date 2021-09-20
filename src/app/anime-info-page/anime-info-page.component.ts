@@ -34,9 +34,9 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
       this.id = +params['id'];
     });
 
-    const response = await fetch(`https://api.jikan.moe/v3/anime/${1}`);
+    const response = await fetch(`https://api.jikan.moe/v3/anime/${this.id}`);
     const myJson = await response.json();
-    this.anime = new Anime(myJson.title, myJson.image_url, myJson.synopsis, myJson.airing, myJson.episodes, myJson.genres, ["null"], myJson.airing ?  "Lançando" : "Completo", myJson.trailer_url, myJson.aired, myJson.duration, myJson.score, myJson.popularity, myJson.rank)
+    this.anime = new Anime(myJson)
     console.log(myJson.aired)
     console.log(this.anime)
     console.log(myJson)
@@ -57,24 +57,23 @@ class Anime {
   image_url: string
   synopsis: string
 
-  genresToString: [string]
+  genresToString: [string] = [""]
   status: string
 
-  constructor(title: string, image_url: string, synopsis: string, airing: boolean, episodes: number, genres: [Genre], genresToString: [string], status: string, trailer_url: string, aired: Aired, duration: string, score: number, popularity: number, rank: number) {
-    this.airing = airing
-    this.title = title
-    this.image_url = image_url
-    this.synopsis = synopsis
-    this.episodes = episodes
-    this.genres = genres
-    this.genresToString = genresToString
-    this.status = status
-    this.trailer_url = trailer_url
-    this.aired = new Aired(aired.string)
-    this.duration = duration
-    this.score = score
-    this.popularity = popularity
-    this.rank = rank
+  constructor(json: any) {
+    this.airing = json.airing
+    this.title = json.title
+    this.image_url = json.image_url
+    this.synopsis = json.synopsis
+    this.episodes = json.episodes
+    this.genres = json.genres
+    this.status = json.airing ?  "Lançando" : "Completo"
+    this.trailer_url = json.trailer_url
+    this.aired = new Aired(json.aired.string)
+    this.duration = json.duration
+    this.score = json.score
+    this.popularity = json.popularity
+    this.rank = json.rank
     this.parseGenres()
   }
 

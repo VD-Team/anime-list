@@ -6,7 +6,7 @@ import { PageHomeComponent, PageNotFoundComponent } from './components';
 
 const routes: Routes = [
     {path: 'home', component: PageHomeComponent},
-    {path: 'animeInfoPage', pathMatch: 'full', component: AnimeInfoPageComponent},
+    {path: 'animeInfoPage/:id', component: AnimeInfoPageComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: '**', component: PageNotFoundComponent}
 ]
