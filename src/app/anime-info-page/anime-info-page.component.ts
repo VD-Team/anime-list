@@ -14,10 +14,12 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
   private sub: any;
 
   dangerousUrl: string
+  //URL DO VÍDEO
   videoUrl: SafeResourceUrl
 
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {
     this.dangerousUrl = 'https://www.youtube.com/embed/qig4KOK2R2g?enablejsapi=1&wmode=opaque&autoplay=1'
+    //CONVERSÃO DA URL PARA UMA URL SEGURA DE ACOROD COM OS PADRÕES DO ANGULAR
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousUrl)
   }
 
@@ -34,15 +36,15 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
       this.id = +params['id'];
     });
 
-    const response = await fetch(`https://api.jikan.moe/v3/anime/${1}`);
+    const response = await fetch(`https://api.jikan.moe/v3/anime/${38691}`);
     const myJson = await response.json();
-    this.anime = new Anime(myJson.title, myJson.image_url, myJson.synopsis, myJson.airing, myJson.episodes, myJson.genres, ["null"], myJson.airing ?  "Lançando" : "Completo", myJson.trailer_url, myJson.aired, myJson.duration, myJson.score, myJson.popularity, myJson.rank)
-    console.log(myJson.aired)
+    this.anime = new Anime(myJson.title, myJson.image_url, myJson.synopsis, myJson.airing, myJson.episodes, myJson.genres, ["null"], myJson.airing ?  "Lançando" : "Completo", myJson.trailer_url, new Aired(myJson.aired.string), myJson.duration, myJson.score, myJson.popularity, myJson.rank)
+    console.log(myJson.aired.string)
     console.log(this.anime)
-    console.log(myJson)
   }
 }
 
+//ANIME RECEBIDO PELA API
 class Anime {
   aired: Aired
   airing: boolean
@@ -70,16 +72,12 @@ class Anime {
     this.genresToString = genresToString
     this.status = status
     this.trailer_url = trailer_url
-    this.aired = new Aired(aired.string)
+    this.aired = aired
     this.duration = duration
     this.score = score
     this.popularity = popularity
     this.rank = rank
     this.parseGenres()
-  }
-
-  parseDate(){
-
   }
 
   parseGenres(){
@@ -89,17 +87,20 @@ class Anime {
       const newGenre = new Genre(this.genres[i].name)
       parsedGenres.push(newGenre)
     }
+    //ATRIBUI OS GÊNEROS AO ARRAY PRINCIPAL DE GÊNEROS
     for (let i = 0; i < parsedGenres.length; i++) {
       this.genres[i] = parsedGenres[i]
     }
+    //REMOVE O PRIMEIRO ITEM DO ARRAY, QUE ATUALMENTE É ""
     this.genresToString.shift()
+    //PREENCHIMENTO DO ARRAY DE STRINGS DE GÊNERO
     for (let i = 0; i < this.genres.length; i++) {
       this.genresToString.push(this.genres[i].name)
     }
-    console.log(this.genresToString.join(', '))
   }
 }
 
+//CLASSE GÊNERO PARA O ANIME
 class Genre{
   name: string
 
