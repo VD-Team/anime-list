@@ -1,9 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AnimeCardComponent, FooterComponent, HeaderComponent, PageHomeComponent, PageNotFoundComponent } from './components';
+import { AnimeInfoPageComponent } from './anime-info-page/anime-info-page.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AnimeCardComponent, FooterComponent, HeaderComponent, PageHomeComponent
     FooterComponent,
     AnimeCardComponent,
     PageHomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AnimeInfoPageComponent
   ],
   imports: [
     BrowserModule,

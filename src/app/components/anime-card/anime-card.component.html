@@ -1,10 +1,10 @@
-<div class="anime-card">
+<div (click)="goToPage('animeInfoPage', 1)" class="anime-card">
   <div class="anime-card__image">
     <img src="{{image_url}}" alt="Anime Image">
   </div>
 
   <div class="anime-card__ranked">
-    #1
+    #{{score}}
   </div>
 
   <div class="anime-card__backgroundName">
