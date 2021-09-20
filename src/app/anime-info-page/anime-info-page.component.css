@@ -1,0 +1,150 @@
+.page-info-anime{
+  flex-wrap: wrap;
+  alignment: left;
+  color: #63788F;
+  font-family: Arial, serif;
+  font-size: 17px;
+}
+
+.page-info-anime__all{
+  display: flex;
+  padding: 20px;
+}
+
+.page-info-anime__information{
+  display: inline-table;
+  border-spacing: 20px;
+  padding-bottom: 10px;
+}
+
+.page-info-anime__infoCards{
+  font-size: 14px;
+  display: inline-table;
+  color: #F4F4F4;
+  text-align: left;
+}
+
+/*---------------------*/
+
+/* SINOPSE */
+
+.page-info-anime__synopsisGroup{
+  padding: 0 20px 0 20px;
+}
+
+.page-info-anime__synopsisTitle{
+  padding-bottom: 25px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.page-info-anime__synopsis{
+  justify-content: normal;
+  line-height: 1.5;
+}
+
+/*---------------------*/
+
+/* TRAILER */
+
+.page-info-anime__Trailer p{
+  padding: 0 0 0 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.page-info-anime__Trailer iframe{
+  padding: 20px;
+  width: 70%;
+  height: 500px;
+}
+
+/*---------------------*/
+
+/* ELEMENTOS INFO CARDS */
+
+.page-info-anime__popularCard{
+  display: flex;
+  width: 245px;
+  background-color: #07A0C3;
+  padding: 1px 5px;
+  margin-left: 20px;
+  margin-bottom: 8px;
+  border-radius: 7px;
+}
+
+.page-info-anime__popularCard img{
+  width: 22px;
+  height: 22px;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.page-info-anime__popularCard p{
+  margin-left: 3px;
+}
+
+.page-info-anime__ratedCard{
+  display: flex;
+  width: 245px;
+  background-color: #FF434D;
+  padding: 1px 5px;
+  margin-left: 20px;
+  border-radius: 7px;
+}
+
+.page-info-anime__ratedCard img{
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+}
+
+.page-info-anime__ratedCard p{
+  margin-left: 3px;
+}
+
+/*---------------------*/
+
+/* ELEMENTOS SEPARADOS */
+
+.page-info-anime__synopsis-cards{
+  display: flex;
+}
+
+/*---------------------*/
+
+/* ELEMENTOS SEPARADOS */
+
+.page-info-anime__image img{
+  border-radius: 15px;
+  width: 250px;
+  height: 400px;
+}
+
+.page-info-anime__title{
+  font-weight: bold;
+  font-size: x-large;
+  padding-bottom: 30px;
+}
+
+.page-info-anime__genres{
+  padding-bottom: 20px;
+}
+
+.page-info-anime__episodes {
+  padding-bottom: 20px;
+}
+
+.page-info-anime__date {
+  padding-bottom: 20px;
+}
+
+.page-info-anime__status {
+  padding-bottom: 20px;
+}
+
+.page-info-anime__score{
+  padding-bottom: 20px;
+}
+
+/*---------------------*/

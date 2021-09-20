@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="page-info-anime">
+  <div class="page-info-anime__all">
+    <div class="page-info-anime__image">
+      <img src="{{anime?.image_url}}" alt="Anime Image">
+    </div>
+
+    <div class="page-info-anime__information">
+      <div class="page-info-anime__title">
+        {{anime?.title}}
+      </div>
+
+      <div class="page-info-anime__genres">
+        Gêneros: {{(anime?.genresToString)?.join(', ')}}
+      </div>
+
+      <div class="page-info-anime__score">
+        Nota: {{anime?.score}}
+      </div>
+
+      <div class="page-info-anime__episodes">
+        Episodios: {{anime?.episodes}}
+      </div>
+
+      <div class="page-info-anime__date">
+        Lançamento: {{anime?.aired}}
+      </div>
+
+      <div class="page-info-anime__status">
+        Status: {{anime?.status}}
+      </div>
+
+      <div class="page-info-anime__duration">
+        Duração: {{anime?.duration }}
+      </div>
+    </div>
+  </div>
+  <div class="page-info-anime__synopsis-cards">
+    <div class="page-info-anime__infoCards">
+      <div class="page-info-anime__popularCard">
+        <img src="./assets/card-icons/heart.png" alt="Heart">
+        <p>#{{anime?.rank}}</p>
+        <p>Most Popular All Time</p>
+      </div>
+      <div class="page-info-anime__ratedCard">
+        <img src="./assets/card-icons/star.png" alt="Star">
+        <p>#{{anime?.popularity}}</p>
+        <p>Highest Rated All Time</p>
+      </div>
+    </div>
+    <div class="page-info-anime__synopsisGroup">
+      <div class="page-info-anime__synopsisTitle">
+        Sinopse
+      </div>
+      <div class="page-info-anime__synopsis">
+        {{anime?.synopsis}}
+      </div>
+    </div>
+  </div>
+  <div class="page-info-anime__Trailer">
+    <p>Trailer</p>
+    <iframe src="{{videoUrl}}"></iframe>
+  </div>
+</div>
+<app-footer></app-footer>
