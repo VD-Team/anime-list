@@ -1,3 +1,5 @@
+/* GERAL */
+
 .page-info-anime{
   flex-wrap: wrap;
   alignment: left;
@@ -5,6 +7,7 @@
   font-family: Arial, serif;
   font-size: 17px;
 }
+
 
 .page-info-anime__all{
   display: flex;
@@ -120,7 +123,7 @@ margin-left: 8px;
 
 /*---------------------*/
 
-/* Sinopse+cards */
+/* SINOPSE+CARDS */
 
 .page-info-anime__synopsis-cards{
   display: flex;
@@ -128,7 +131,7 @@ margin-left: 8px;
 
 /*---------------------*/
 
-/* ELEMENTOS SEPARADOS */
+/* INFORMACOES O ANIME */
 
 .page-info-anime__image img{
   border-radius: 15px;

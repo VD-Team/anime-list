@@ -14,10 +14,12 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
   private sub: any;
 
   dangerousUrl: string
+  //URL DO VÍDEO
   videoUrl: SafeResourceUrl
 
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {
     this.dangerousUrl = 'https://www.youtube.com/embed/qig4KOK2R2g?enablejsapi=1&wmode=opaque&autoplay=1'
+    //CONVERSÃO DA URL PARA UMA URL SEGURA DE ACOROD COM OS PADRÕES DO ANGULAR
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousUrl)
   }
 
@@ -39,10 +41,10 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
     this.anime = new Anime(myJson)
     console.log(myJson.aired)
     console.log(this.anime)
-    console.log(myJson)
   }
 }
 
+//ANIME RECEBIDO PELA API
 class Anime {
   aired: Aired
   airing: boolean
@@ -77,10 +79,6 @@ class Anime {
     this.parseGenres()
   }
 
-  parseDate(){
-
-  }
-
   parseGenres(){
     let parsedGenres = [];
 
@@ -88,17 +86,20 @@ class Anime {
       const newGenre = new Genre(this.genres[i].name)
       parsedGenres.push(newGenre)
     }
+    //ATRIBUI OS GÊNEROS AO ARRAY PRINCIPAL DE GÊNEROS
     for (let i = 0; i < parsedGenres.length; i++) {
       this.genres[i] = parsedGenres[i]
     }
+    //REMOVE O PRIMEIRO ITEM DO ARRAY, QUE ATUALMENTE É ""
     this.genresToString.shift()
+    //PREENCHIMENTO DO ARRAY DE STRINGS DE GÊNERO
     for (let i = 0; i < this.genres.length; i++) {
       this.genresToString.push(this.genres[i].name)
     }
-    console.log(this.genresToString.join(', '))
   }
 }
 
+//CLASSE GÊNERO PARA O ANIME
 class Genre{
   name: string
 
