@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
@@ -14,7 +14,7 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
   hasTrailer: boolean = false
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) { }
 
   ngOnInit(): void {
     this.searchAnime()
@@ -28,9 +28,11 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
     });
-
     const response = await fetch(`https://api.jikan.moe/v3/anime/${this.id}`);
     const myJson = await response.json();
+    if(myJson.error) {
+      this.router.navigate(['**']);
+    }
     this.anime = new Anime(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url))
     this.hasTrailer = myJson.trailer_url == null ? false:true
     console.log(myJson.aired)
