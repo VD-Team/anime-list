@@ -1,7 +1,7 @@
 <app-header [button]="'home'" [hasSearch]="true"></app-header>
 <div class="content">
     <div class="cards">
-        <app-anime-card *ngFor="let anime of animes" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
+        <app-anime-card *ngFor="let anime of animes | searchFilter: ''" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
     </div>
 </div>
 <app-footer></app-footer>

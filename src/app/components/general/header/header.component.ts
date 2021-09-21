@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { DataService } from 'src/app/services/data.service';
 
 enum Button {
   Home = 'home',
@@ -12,6 +14,7 @@ enum Button {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+@Injectable()
 export class HeaderComponent implements OnInit {
   private buttonSelected = 'background-color: #FF434D;'
   private buttonUnselected = 'background-color: unset;'
@@ -25,8 +28,9 @@ export class HeaderComponent implements OnInit {
   button: string = Button.None.toString()
   @Input()
   hasSearch: boolean = false
+  searchText: string = ''
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
     switch (this.button) {
@@ -42,5 +46,9 @@ export class HeaderComponent implements OnInit {
     if(!this.hasSearch) {
       this.bsearchStyle = 'display: none;'
     }
+  }
+
+  updateMessage() {
+    this.data.changeMessage(this.searchText)
   }
 }

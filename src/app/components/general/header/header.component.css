@@ -10,7 +10,7 @@ header {
     color: white;
 }
 
-a, button {
+a {
     font-size: 0.85rem;
     text-decoration: none;
     font-weight: bold;
@@ -29,13 +29,31 @@ a, button {
   margin-right: 205px;
 }
 
-img {
-    height: 1.2rem;
-    width: 1.2rem;
+input[type=text] {
+    width: 1rem;
+    box-sizing: border-box;
+    border: 2px solid white;
+    border-radius: 0.7rem;
+    font-size: 16px;
+    color: white;
+    background-color: #2A4760;
+    background-image: url('~src/assets/search-icon.png');
+    background-size: 1.8rem;
+    background-repeat: no-repeat;
+    background-position: 10px 6px;
+    padding: 12px 20px 12px 50px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 300px;
+    border-color: #FF434D;
+    outline: none;
 }
 
 @media screen and (max-width: 800px) {
-    .buttons button {
+    .buttons a {
         margin-right: 3rem;
     }
 }

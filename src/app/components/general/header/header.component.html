@@ -5,8 +5,8 @@
         <a id="bfavoritos" routerLink="/favoritos" [style] = "bfavoritosStyle">Favoritos</a>
     </div>
     <div class="search" [style] = "bsearchStyle">
-        <button onclick="console.log('Clicked')">
-            <img [src] = "searchIconPath" alt="icone de pesquisa">
-        </button>
+        <form action="">
+            <input type="text" name="search" placeholder="Pesquise animes" [(ngModel)]="searchText" (ngModelChange)="updateMessage()">
+        </form>
     </div>
 </header>
