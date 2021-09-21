@@ -1,97 +1,105 @@
 <app-header></app-header>
-<div class="page-info-anime">
-  <div class="page-info-anime__all">
-    <div class="page-info-anime__image">
-      <img src="{{anime?.image_url}}" alt="Anime Image">
-    </div>
-
-    <div class="page-info-anime__information">
-      <div class="page-info-anime__title">
-        {{(anime?.title)?.toUpperCase()}}
+<div class="content">
+  <app-anime-form-background></app-anime-form-background>
+  <div class="page-info-anime__content">
+    <div class="page-info-anime__info">
+      <div class="page-info-anime__image">
+        <img src="{{anime?.image_url}}" alt="Anime Image">
       </div>
 
-      <div class="page-info-anime__genres">
-        Gêneros: {{(anime?.genresToString)?.join(', ')}}
-      </div>
+      <div class="page-info-anime__stats">
+        <div class="page-info-anime__title">
+          {{(anime?.title)?.toUpperCase()}}
+        </div>
 
-      <div class="page-info-anime__score">
-        Nota: {{anime?.score}}
-      </div>
+        <div class="page-info-anime__genres">
+          Gêneros: {{(anime?.genresToString)?.join(', ')}}
+        </div>
 
-      <div class="page-info-anime__episodes">
-        Episodios: {{anime?.episodes}}
-      </div>
+        <div class="page-info-anime__score">
+          Nota: {{anime?.score}}
+        </div>
 
-      <div class="page-info-anime__date">
-        Lançamento: {{anime?.aired?.string}}
-      </div>
+        <div class="page-info-anime__episodes">
+          Episodios: {{anime?.episodes}}
+        </div>
 
-      <div class="page-info-anime__status">
-        Status: {{anime?.status}}
-      </div>
+        <div class="page-info-anime__date">
+          Lançamento: {{anime?.aired?.string}}
+        </div>
 
-      <div class="page-info-anime__duration">
-        Duração: {{anime?.duration }}
+        <div class="page-info-anime__status">
+          Status: {{anime?.status}}
+        </div>
+
+        <div class="page-info-anime__duration">
+          Duração: {{anime?.duration }}
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="page-info-anime__synopsis-cards">
-    <div class="page-info-anime__infoCards">
-      <div class="page-info-anime__popularCard">
+      <button class="page-info-anime__likeButton">
         <img src="./assets/card-icons/heart.png" alt="Heart">
-        <p class="page-info-anime__popularCard-number">#{{anime?.rank}}</p>
-        <p class="page-info-anime__popularCard-string">Most Popular All Time</p>
-      </div>
-      <div class="page-info-anime__ratedCard">
-        <img src="./assets/card-icons/star.png" alt="Star">
-        <p class="page-info-anime__ratedCard-number">#{{anime?.popularity}}</p>
-        <p class="page-info-anime__ratedCard-string">Highest Rated All Time</p>
-      </div>
-      <div class="page-info-anime__card-other-infos">
-        <h4>Formato</h4>
-        <p>{{anime?.type}}</p>
-        <h4>Estúdios</h4>
-        <p>{{(anime?.studiosToString)?.join(', ')}}</p>
-        <h4>Título em Inglês</h4>
-        <p>{{anime?.title_english}}</p>
-        <h4>Título em Japonês</h4>
-        <p>{{anime?.title_japanese}}</p>
-      </div>
+      </button>
     </div>
-    <div class="page-info-anime__synopsisGroup">
-      <div class="page-info-anime__synopsisTitle">
-        <h2>Sinopse</h2>
+    <div class="page-info-anime__footer-container">
+      <div class="page-info-anime__synopsis-cards">
+        <div class="page-info-anime__infoCards">
+          <div class="page-info-anime__popularCard">
+            <img src="./assets/card-icons/heart.png" alt="Heart">
+            <p class="page-info-anime__popularCard-number">#{{anime?.rank}}</p>
+            <p class="page-info-anime__popularCard-string">Most Popular All Time</p>
+          </div>
+          <div class="page-info-anime__ratedCard">
+            <img src="./assets/card-icons/star.png" alt="Star">
+            <p class="page-info-anime__ratedCard-number">#{{anime?.popularity}}</p>
+            <p class="page-info-anime__ratedCard-string">Highest Rated All Time</p>
+          </div>
+          <div class="page-info-anime__card-other-infos">
+            <h4>Formato</h4>
+            <p>{{anime?.type}}</p>
+            <h4>Estúdios</h4>
+            <p>{{(anime?.studiosToString)?.join(', ')}}</p>
+            <h4>Título em Inglês</h4>
+            <p>{{anime?.title_english}}</p>
+            <h4>Título em Japonês</h4>
+            <p>{{anime?.title_japanese}}</p>
+          </div>
+        </div>
+        <div class="page-info-anime__synopsisGroup">
+          <div class="page-info-anime__synopsisTitle">
+            <h2>Sinopse</h2>
+          </div>
+          <div class="page-info-anime__synopsis">
+            {{anime?.synopsis}}
+          </div>
+        </div>
       </div>
-      <div class="page-info-anime__synopsis">
-        {{anime?.synopsis}}
+      <div class="page-info-anime__trailer" [hidden]="!hasTrailer">
+        <h2>Trailer</h2>
+        <iframe frameborder="0" allowfullscreen [src]="anime?.trailer_url"></iframe>
       </div>
-    </div>
-  </div>
-  <div class="page-info-anime__Trailer" [hidden]="!hasTrailer">
-    <h2>Trailer</h2>
-    <iframe frameborder="0" allowfullscreen [src]="anime?.trailer_url"></iframe>
-  </div>
-  <div class="page-info-anime__opening-ending">
-    <div class="page-info-anime__links">
-      <h3>Links</h3>
-      <div *ngFor="let link of anime?.external_links" class="page-info-anime__linkCard">
-        <a href="{{link.url}}" target="_blank">{{link.name}}</a>
-      </div>
-    </div>
+      <div class="page-info-anime__opening-ending">
+        <div class="page-info-anime__links">
+          <h3>Links</h3>
+          <div *ngFor="let link of anime?.external_links" class="page-info-anime__linkCard">
+            <a href="{{link.url}}" target="_blank">{{link.name}}</a>
+          </div>
+        </div>
 
-    <div class="page-info-anime__openingCards">
-      <h3>Aberturas</h3>
-      <div *ngFor="let opening of anime?.opening_themes" class="page-info-anime__openingCard">
-        <p>{{opening}}</p>
-      </div>
-    </div>
+        <div class="page-info-anime__openingCards">
+          <h3>Aberturas</h3>
+          <div *ngFor="let opening of anime?.opening_themes" class="page-info-anime__openingCard">
+            <p>{{opening}}</p>
+          </div>
+        </div>
 
-    <div class="page-info-anime__endingCards">
-      <h3>Fechamentos</h3>
-      <div *ngFor="let ending of anime?.ending_themes" class="page-info-anime__endingCard">
-        <p>{{ending}}</p>
+        <div class="page-info-anime__endingCards">
+          <h3>Fechamentos</h3>
+          <div *ngFor="let ending of anime?.ending_themes" class="page-info-anime__endingCard">
+            <p>{{ending}}</p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+    </div>
 </div>
 <app-footer></app-footer>

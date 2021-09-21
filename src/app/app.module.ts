@@ -9,6 +9,8 @@ import { FooterComponent, HeaderComponent } from './components/general';
 import { AnimeCardComponent } from './components/anime-card';
 import { FormsModule } from '@angular/forms';
 import { DataService } from './services/data.service';
+import { AnimeFormComponent } from './anime-form/anime-form.component';
+import { AnimeFormBackgroundComponent } from './anime-form-background/anime-form-background.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { DataService } from './services/data.service';
     AnimeInfoPageComponent,
     PagePerfilComponent,
     PageFavoritosComponent,
-    FilterPipe
+    FilterPipe,
+    AnimeFormComponent,
+    AnimeFormBackgroundComponent
   ],
   imports: [
     BrowserModule,

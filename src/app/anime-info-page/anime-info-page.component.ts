@@ -31,13 +31,9 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
     const response = await fetch(`https://api.jikan.moe/v3/anime/${this.id}`);
     const myJson = await response.json();
     if(myJson.error) {
-      this.router.navigate(['**']);
+      await this.router.navigate(['**']);
     }
-    const links = myJson.external_links
-    this.anime = new Anime(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url), links)
-    for (let i = 0; i < links; i++) {
-      this.anime.external_links[i] = new Link(links[i].name, this.sanitizer.bypassSecurityTrustUrl(links[i].url))
-    }
+    this.anime = new Anime(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url))
     this.hasTrailer = myJson.trailer_url != null
   }
 }
@@ -68,7 +64,7 @@ class Anime {
   studiosToString: [string] = [""]
   status: string
 
-  constructor(json: any, trailer_url: SafeResourceUrl, externalLinks: [Link]) {
+  constructor(json: any, trailer_url: SafeResourceUrl) {
     this.airing = json.airing
     this.title = json.title
     this.image_url = json.image_url

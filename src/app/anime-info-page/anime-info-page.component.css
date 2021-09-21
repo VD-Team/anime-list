@@ -1,22 +1,31 @@
 /* GERAL */
 
-.page-info-anime{
-  flex-wrap: wrap;
-  alignment: left;
+.content{
+  justify-content: center;
+  display: flex;
   background-color: #F4F4F4;
+}
+
+.page-info-anime__content{
+  max-width: none;
   color: #63788F;
   font-family: Arial, serif;
   font-size: 14px;
   min-height: 85vh;
 }
 
-.page-info-anime__all{
+.page-info-anime__footer-container{
+  max-width: 1600px;
+  justify-content: center;
+}
+
+.page-info-anime__info{
   display: flex;
   background-color: #FFFFFF;
   padding: 40px 0 15px 190px;
 }
 
-.page-info-anime__information{
+.page-info-anime__stats{
   display: inline-table;
   margin-left: 20px;
   padding-bottom: 20px;
@@ -25,7 +34,6 @@
 .page-info-anime__infoCards{
   display: inline-table;
   color: #F4F4F4;
-  text-align: left;
 }
 
 /*---------------------*/
@@ -41,7 +49,6 @@
 }
 
 .page-info-anime__synopsis{
-  justify-content: normal;
   line-height: 1.5;
 }
 
@@ -49,11 +56,11 @@
 
 /* TRAILER */
 
-.page-info-anime__Trailer{
+.page-info-anime__trailer{
   margin-left: 190px;
 }
 
-.page-info-anime__Trailer iframe{
+.page-info-anime__trailer iframe{
   width: 86%;
   height: 590px;
   padding-bottom: 40px;
@@ -80,7 +87,6 @@
   left: 10px;
   width: 22px;
   height: 22px;
-  justify-content: center;
 }
 
 .page-info-anime__popularCard-number{
@@ -88,7 +94,7 @@
 }
 
 .page-info-anime__popularCard-string{
-margin-left: 8px;
+  margin-left: 8px;
 }
 
 .page-info-anime__ratedCard{
@@ -148,7 +154,7 @@ margin-left: 8px;
 
 .page-info-anime__title{
   font-weight: bold;
-  font-size: x-large;
+  font-size: large;
   padding-bottom: 30px;
 }
 
@@ -172,6 +178,20 @@ margin-left: 8px;
   padding-bottom: 20px;
 }
 
+.page-info-anime__likeButton{
+  position: absolute;
+  right: 195px;
+  width: 1.4%;
+  height: 2.6%;
+}
+
+.page-info-anime__likeButton img{
+  position: absolute;
+  right: 195px;
+  width: 1.4%;
+  height: 2.6%;
+}
+
 /*---------------------*/
 
 /* INFORMACOES O ANIME */
@@ -186,12 +206,12 @@ margin-left: 8px;
 }
 
 .page-info-anime__openingCards{
-  margin-left: 10px;
+  margin-left: 120px;
   display: inline-table;
 }
 
 .page-info-anime__endingCards{
-  margin-left: 250px;
+  margin-left: 140px;
   display: inline-table;
 }
 
