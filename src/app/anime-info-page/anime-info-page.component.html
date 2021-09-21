@@ -60,7 +60,7 @@
     </div>
     <div class="page-info-anime__synopsisGroup">
       <div class="page-info-anime__synopsisTitle">
-        Sinopse
+        <h2>Sinopse</h2>
       </div>
       <div class="page-info-anime__synopsis">
         {{anime?.synopsis}}
@@ -68,8 +68,30 @@
     </div>
   </div>
   <div class="page-info-anime__Trailer" [hidden]="!hasTrailer">
-    <p>Trailer</p>
+    <h2>Trailer</h2>
     <iframe frameborder="0" allowfullscreen [src]="anime?.trailer_url"></iframe>
+  </div>
+  <div class="page-info-anime__opening-ending">
+    <div class="page-info-anime__links">
+      <h3>Links</h3>
+      <div *ngFor="let link of anime?.external_links" class="page-info-anime__linkCard">
+        <a href="{{link.url}}" target="_blank">{{link.name}}</a>
+      </div>
+    </div>
+
+    <div class="page-info-anime__openingCards">
+      <h3>Aberturas</h3>
+      <div *ngFor="let opening of anime?.opening_themes" class="page-info-anime__openingCard">
+        <p>{{opening}}</p>
+      </div>
+    </div>
+
+    <div class="page-info-anime__endingCards">
+      <h3>Fechamentos</h3>
+      <div *ngFor="let ending of anime?.ending_themes" class="page-info-anime__endingCard">
+        <p>{{ending}}</p>
+      </div>
+    </div>
   </div>
 </div>
 <app-footer></app-footer>

@@ -6,10 +6,9 @@
   background-color: #F4F4F4;
   color: #63788F;
   font-family: Arial, serif;
-  font-size: 15px;
+  font-size: 14px;
   min-height: 85vh;
 }
-
 
 .page-info-anime__all{
   display: flex;
@@ -24,7 +23,6 @@
 }
 
 .page-info-anime__infoCards{
-  font-size: 14px;
   display: inline-table;
   color: #F4F4F4;
   text-align: left;
@@ -42,13 +40,6 @@
   border-radius: 7px;
 }
 
-.page-info-anime__synopsisTitle{
-  padding-bottom: 25px;
-  font-size: 25px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
 .page-info-anime__synopsis{
   justify-content: normal;
   line-height: 1.5;
@@ -60,12 +51,6 @@
 
 .page-info-anime__Trailer{
   margin-left: 190px;
-  margin-bottom: 40px;
-}
-
-.page-info-anime__Trailer p{
-  font-size: 25px;
-  font-weight: bold;
 }
 
 .page-info-anime__Trailer iframe{
@@ -185,6 +170,66 @@ margin-left: 8px;
 
 .page-info-anime__score{
   padding-bottom: 20px;
+}
+
+/*---------------------*/
+
+/* INFORMACOES O ANIME */
+
+.page-info-anime__opening-ending{
+  display: flex;
+}
+
+.page-info-anime__links{
+  margin-left: 190px;
+  display: inline-table;
+}
+
+.page-info-anime__openingCards{
+  margin-left: 10px;
+  display: inline-table;
+}
+
+.page-info-anime__endingCards{
+  margin-left: 250px;
+  display: inline-table;
+}
+
+.page-info-anime__linkCard{
+  width: 240px;
+  font-weight: lighter;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 15px 7px 15px 7px;
+  background-color: #2A4760;
+}
+.page-info-anime__linkCard a{
+  position: relative;
+  float: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: none;
+  text-decoration:none;
+  color: #F4F4F4;
+}
+
+.page-info-anime__openingCard{
+  width: 300px;
+  font-weight: lighter;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  padding: 1px 7px 1px 7px;
+  background-color: #FFFFFF;
+}
+
+.page-info-anime__endingCard{
+  width: 300px;
+  font-weight: lighter;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  padding: 1px 7px 1px 7px;
+  background-color: #FFFFFF;
 }
 
 /*---------------------*/

@@ -26,7 +26,6 @@ export class PageHomeComponent implements OnInit {
 }
 
 class Anime {
-
   title: string
   image_url: string
   score: number

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-anime-info-page',
@@ -33,7 +33,11 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
     if(myJson.error) {
       this.router.navigate(['**']);
     }
-    this.anime = new Anime(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url))
+    const links = myJson.external_links
+    this.anime = new Anime(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url), links)
+    for (let i = 0; i < links; i++) {
+      this.anime.external_links[i] = new Link(links[i].name, this.sanitizer.bypassSecurityTrustUrl(links[i].url))
+    }
     this.hasTrailer = myJson.trailer_url != null
   }
 }
@@ -43,8 +47,11 @@ class Anime {
   aired: Aired
   airing: boolean
   duration: string
+  ending_themes: [string]
   episodes: number
+  external_links: [Link]
   genres: [Genre]
+  opening_themes: [string]
   popularity: number
   rank: number
   score: number
@@ -61,17 +68,20 @@ class Anime {
   studiosToString: [string] = [""]
   status: string
 
-  constructor(json: any, trailer_url: SafeResourceUrl) {
+  constructor(json: any, trailer_url: SafeResourceUrl, externalLinks: [Link]) {
     this.airing = json.airing
     this.title = json.title
     this.image_url = json.image_url
     this.synopsis = json.synopsis
+    this.ending_themes = json.ending_themes
     this.episodes = json.episodes
+    this.external_links = json.external_links
     this.genres = json.genres
     this.status = json.airing ?  "Lançando" : "Completo"
     this.trailer_url = json.trailer_url
     this.aired = new Aired(json.aired.string)
     this.duration = json.duration
+    this.opening_themes = json.opening_themes
     this.score = json.score
     this.popularity = json.popularity
     this.rank = json.rank
@@ -145,5 +155,15 @@ class Studio{
 
   constructor(name: string) {
     this.name = name
+  }
+}
+
+class Link{
+  name: string
+  url: SafeUrl
+
+  constructor(name: string, url: SafeUrl) {
+    this.name = name
+    this.url = url
   }
 }
