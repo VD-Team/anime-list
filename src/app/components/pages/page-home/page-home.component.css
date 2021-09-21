@@ -10,4 +10,5 @@
 .content{
   justify-content: center;
   display: flex;
+  min-height: 95vh;
 }
