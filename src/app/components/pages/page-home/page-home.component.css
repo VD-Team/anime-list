@@ -1,7 +1,13 @@
 .cards {
+    max-width: 1150px;
     display: flex;
     margin-left: 190px;
     margin-right: 190px;
     padding-top: 50px;
     flex-wrap: wrap;
+}
+
+.content{
+  justify-content: center;
+  display: flex;
 }

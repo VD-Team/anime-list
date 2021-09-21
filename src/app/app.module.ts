@@ -7,6 +7,8 @@ import { PageFavoritosComponent, PageHomeComponent, PageNotFoundComponent, PageP
 import { AnimeInfoPageComponent } from './anime-info-page/anime-info-page.component';
 import { FooterComponent, HeaderComponent } from './components/general';
 import { AnimeCardComponent } from './components/anime-card';
+import { AnimeFormComponent } from './anime-form/anime-form.component';
+import { AnimeFormBackgroundComponent } from './anime-form-background/anime-form-background.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { AnimeCardComponent } from './components/anime-card';
     PageNotFoundComponent,
     AnimeInfoPageComponent,
     PagePerfilComponent,
-    PageFavoritosComponent
+    PageFavoritosComponent,
+    AnimeFormComponent,
+    AnimeFormBackgroundComponent
   ],
   imports: [
     BrowserModule,
