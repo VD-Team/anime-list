@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+.content {
+    min-height: 95vh;
+}
+
+.profile img {
+    height: 10rem;
+    border-radius: 10rem;
+    margin-right: 2rem;
+    background-color: #DDDDDD;
+}
+
+.profile {
+    height: 18rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    display: flex;
+    border-bottom: 2px #63788F solid;
+}
+
+.infos {
+    height: auto;
+    align-items: center;
+    color: #63788F;
+}
+
+span {
+    display: block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: x-large;
+}
+
+span.info {
+    border: 2px #63788F solid;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    min-width: 25rem;
+}
+
+#login-info {
+    margin-bottom: 1rem;
+}
+
+.favoritos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cards {
+    max-width: 1150px;
+    padding-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    margin-bottom: 5rem;
+}
+
+h1 {
+    color: #63788F;
+    font-family: 'Open Sans', sans-serif;
+    align-self: center;
+}

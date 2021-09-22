@@ -70,7 +70,7 @@ export class PageHomeComponent implements OnInit, AfterViewInit {
   }
 }
 
-class Anime {
+export class Anime {
   title: string
   image_url: string
   score: number

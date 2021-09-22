@@ -1,3 +1,19 @@
 <app-header [button]="'perfil'"></app-header>
-<p>page-perfil works!</p>
+<div class="content">
+    <div class="profile">
+        <img [src]="user?.avatar_url">
+        <div class="infos">
+            <span class="label">Username</span>
+            <span class="info" id="login-info">{{user?.login}}</span>
+            <span class="label">Nome</span>
+            <span class="info">{{user?.name}}</span>
+        </div>
+    </div>
+    <div class="favoritos">
+        <h1>Favoritos</h1>
+        <div class="cards">
+            <app-anime-card *ngFor="let anime of user?.favoritos" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
+        </div>
+    </div>
+</div>
 <app-footer></app-footer>
