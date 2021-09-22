@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {DomSanitizer, SafeResourceUrl, SafeUrl} from '@angular/platform-browser';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-anime-info-page',
@@ -12,11 +13,15 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
   anime: Anime | undefined
   id: number | undefined
   hasTrailer: boolean = false
+  hasFavoriteForm: boolean = true
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router) { }
+  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private router: Router, private data: DataService) { }
 
   ngOnInit(): void {
+    this.data.currentWindowState.subscribe(value => {
+      this.hasFavoriteForm = value
+    })
     this.searchAnime()
   }
 

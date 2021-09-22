@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="content">
-  <app-anime-form-background></app-anime-form-background>
+  <app-anime-form-background [hidden]="!hasFavoriteForm"></app-anime-form-background>
   <div class="page-info-anime__content">
     <div class="page-info-anime__info">
       <div class="page-info-anime__image">
@@ -36,8 +36,7 @@
           Duração: {{anime?.duration }}
         </div>
       </div>
-      <button class="page-info-anime__likeButton">
-        <img src="./assets/card-icons/heart.png" alt="Heart">
+      <button class="page-info-anime__likeButton" type="button" (click)="hasFavoriteForm = true">
       </button>
     </div>
     <div class="page-info-anime__footer-container">

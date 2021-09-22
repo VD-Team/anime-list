@@ -12,16 +12,9 @@
   z-index: 1000;
 }
 
-.anime-form__header{
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.anime-form__header img{
-  width: 15%;
-  height: 35%;
+.anime-form__header img {
   border-radius: 3px;
+  height: 100%;
 }
 
 .anime-form__forms{
@@ -43,4 +36,23 @@ form input{
   height: 35px;
   outline: none;
   border: none;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  height: 15rem;
+}
+
+.top button {
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  outline: none;
+  border-radius: 2rem;
+  background-color: #FF434D;
+  color: white;
+  font-size: larger;
+  cursor: pointer;
 }

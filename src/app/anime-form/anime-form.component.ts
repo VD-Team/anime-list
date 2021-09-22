@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-anime-form',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnimeFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
+    this.data
   }
 
+  closeWindow() {
+    this.data.changeWindowState(false)
+  }
 }
