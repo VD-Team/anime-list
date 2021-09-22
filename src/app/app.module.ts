@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { FilterPipe, PageFavoritosComponent, PageHomeComponent, PageNotFoundComponent, PagePerfilComponent } from './components/pages';
+import { FilterPipe, PageHomeComponent, PageNotFoundComponent, PagePerfilComponent } from './components/pages';
 import { AnimeInfoPageComponent } from './anime-info-page/anime-info-page.component';
 import { FooterComponent, HeaderComponent } from './components/general';
 import { AnimeCardComponent } from './components/anime-card';
@@ -22,7 +22,6 @@ import { AnimeFormBackgroundComponent } from './anime-form-background/anime-form
     PageNotFoundComponent,
     AnimeInfoPageComponent,
     PagePerfilComponent,
-    PageFavoritosComponent,
     FilterPipe,
     AnimeFormComponent,
     AnimeFormBackgroundComponent

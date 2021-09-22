@@ -5,7 +5,6 @@ import { DataService } from 'src/app/services/data.service';
 enum Button {
   Home = 'home',
   Perfil = 'perfil',
-  Favoritos = 'favoritos',
   None = 'null'
 }
 
@@ -21,7 +20,6 @@ export class HeaderComponent implements OnInit {
 
   bhomeStyle = this.buttonUnselected
   bperfilStyle = this.buttonUnselected
-  bfavoritosStyle = this.buttonUnselected
   bsearchStyle = ''
   searchIconPath = 'assets/search-icon.png'
   @Input()
@@ -39,9 +37,6 @@ export class HeaderComponent implements OnInit {
         break;
       case Button.Perfil.toString():
         this.bperfilStyle = this.buttonSelected
-        break;
-      case Button.Favoritos.toString():
-        this.bfavoritosStyle = this.buttonSelected
     }
     if(!this.hasSearch) {
       this.bsearchStyle = 'display: none;'
