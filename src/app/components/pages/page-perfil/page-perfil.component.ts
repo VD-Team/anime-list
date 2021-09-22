@@ -10,36 +10,47 @@ export class PagePerfilComponent implements OnInit {
 
   user: User | undefined
   username: string | null = null
+  inputText: string = ''
+  canLogin: boolean = false
 
   constructor() { }
 
   ngOnInit(): void {
-    sessionStorage.setItem('username', 'VitorG718')
     this.username = sessionStorage.getItem('username')
     if(this.username != null) {
       this.getUserInfo()
-    } else {
-      // Mostrar tela de login
     }
   }
 
   async getUser(): Promise<void> {
+    const username = this.username?.split(' ').join('-')
     fetch(`https://api.github.com/users/${this.username}`)
     .then(response => response.json())
     .then(json => {
-      this.user = new User(json)
-      localStorage.setItem(`user-${this.username}`, JSON.stringify(this.user))
+      this.user = new User(json, this.username!)
+      localStorage.setItem(`user-${username}`, JSON.stringify(this.user))
     })
     .catch(err => console.log(err))
   }
 
   getUserInfo() {
-    let userData = localStorage.getItem(`user-${this.username}`)
+    const username = this.username?.split(' ').join('-')
+    let userData = localStorage.getItem(`user-${username}`)
     if(userData == null) {
       this.getUser()
     } else {
-      this.user = new User(JSON.parse(userData))
+      this.user = new User(JSON.parse(userData), this.username!)
     }
+  }
+
+  logar() {
+    sessionStorage.setItem('username', this.inputText)
+    this.username = this.inputText
+    this.getUserInfo()
+  }
+
+  validateInput() {
+    this.canLogin = this.inputText.length >= 3
   }
 }
 
@@ -52,15 +63,18 @@ class User {
   login: string
   name: string
 
-  constructor(json: any) {    
+  constructor(json: any, username: string) {    
     this.avatar_url = json.avatar_url ?? 'assets/default-avatar.png'
-    this.id = json.id
-    this.login = json.login
-    this.name = json.name ?? json.login
+    this.id = json.id ?? 0
+    this.login = json.login ?? username
+    this.name = json.name ?? this.login
     this.getFavoritos(json.favoritos)
   }
 
   getFavoritos(favoritos: any) {
+    if(!favoritos) {
+      return
+    }
     this.favoritos = []
     for (const favorito of favoritos) {
       this.favoritos.push(new Anime(favorito))

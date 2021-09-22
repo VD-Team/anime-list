@@ -1,19 +1,30 @@
 <app-header [button]="'perfil'"></app-header>
-<div class="content">
-    <div class="profile">
-        <img [src]="user?.avatar_url">
-        <div class="infos">
-            <span class="label">Username</span>
-            <span class="info" id="login-info">{{user?.login}}</span>
-            <span class="label">Nome</span>
-            <span class="info">{{user?.name}}</span>
+<ng-container *ngIf="username != null else loginTemplate">
+    <div class="content">
+        <div class="profile">
+            <img [src]="user?.avatar_url">
+            <div class="infos">
+                <span class="label">Username</span>
+                <span class="info" id="login-info">{{user?.login}}</span>
+                <span class="label">Nome</span>
+                <span class="info">{{user?.name}}</span>
+            </div>
+        </div>
+        <div class="favoritos">
+            <h1>Favoritos</h1>
+            <div class="cards">
+                <app-anime-card *ngFor="let anime of user?.favoritos" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
+            </div>
         </div>
     </div>
-    <div class="favoritos">
-        <h1>Favoritos</h1>
-        <div class="cards">
-            <app-anime-card *ngFor="let anime of user?.favoritos" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
+</ng-container>
+<ng-template #loginTemplate>
+    <div class="login-content" #loginTemplate>
+        <div class="forms">
+            <label for="login">Username do GitHub</label>
+            <input type="text" id="login" name="login" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
+            <button type="submit" (click)="logar()" [disabled]="!canLogin">Logar</button>
         </div>
     </div>
-</div>
+</ng-template>
 <app-footer></app-footer>
