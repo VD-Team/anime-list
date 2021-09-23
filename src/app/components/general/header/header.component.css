@@ -26,29 +26,31 @@ a {
 }
 
 .search{
-  margin-right: 205px;
+  margin-right: 220px;
 }
 
 input[type=text] {
-    width: 1rem;
+    width: 0.2rem;
+    height: 30px;
     box-sizing: border-box;
-    border: 2px solid white;
+    border: none;
     border-radius: 0.7rem;
-    font-size: 16px;
+    font-size: 14px;
     color: white;
     background-color: #2A4760;
     background-image: url('~src/assets/search-icon.png');
-    background-size: 1.8rem;
+    background-size: 1.2rem;
     background-repeat: no-repeat;
-    background-position: 10px 6px;
-    padding: 12px 20px 12px 50px;
+    background-position: 0 6px;
+    padding: 0 5px 0 26px;
     -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+    transition: width 0.5s ease-in-out;
 }
 
 input[type=text]:focus {
-    width: 300px;
-    border-color: #FF434D;
+    width: 250px;
+    height: 30px;
+    border-radius: 0.7rem;
     outline: none;
 }
 

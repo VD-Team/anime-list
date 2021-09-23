@@ -55,14 +55,16 @@ select {
 }
 
 .top button {
-  height: 2rem;
-  width: 2rem;
+  height: 1.2rem;
+  width: 1.2rem;
   border: none;
   outline: none;
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: #FF434D;
+  justify-content: center;
+  display: flex;
   color: white;
-  font-size: larger;
+  font-size: small;
   cursor: pointer;
 }
 
