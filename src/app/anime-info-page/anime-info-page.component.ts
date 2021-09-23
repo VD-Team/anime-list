@@ -38,7 +38,7 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
     if(myJson.error) {
       await this.router.navigate(['**']);
     }
-    this.anime = new AnimeDetail(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url))
+    this.anime = new AnimeDetail(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url), this.id!)
     this.hasTrailer = myJson.trailer_url != null
   }
 }
@@ -71,8 +71,8 @@ export class AnimeDetail {
   studiosToString: [string] = [""]
   status: string
 
-  constructor(json: any, trailer_url: SafeResourceUrl) {
-    this.id = json.id
+  constructor(json: any, trailer_url: SafeResourceUrl, id: number) {
+    this.id = id
     this.airing = json.airing
     this.title = json.title
     this.image_url = json.image_url

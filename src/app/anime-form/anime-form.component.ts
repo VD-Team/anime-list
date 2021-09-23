@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, KeyValueDiffer, KeyValueDiffers, OnInit } from '@angular/core';
+import { Observable, of, Subscription } from 'rxjs';
 import { AnimeDetail } from '../anime-info-page/anime-info-page.component';
 import { User } from '../components/pages';
 import { DataService } from '../services/data.service';
@@ -22,10 +23,23 @@ export class AnimeFormComponent implements OnInit {
   rewatch: number = 0
   private currentDate = new Date()
 
-  constructor(private data: DataService) { }
+  differ: KeyValueDiffer<string, any>
+  constructor(private data: DataService, private differs: KeyValueDiffers) {
+    this.differ = this.differs.find({}).create()
+  }
 
   ngOnInit(): void {
-    this.data
+    
+  }
+  ngDoCheck() {
+    const change = this.differ.diff(this)
+    if (change) {
+      change.forEachChangedItem(item => {
+        if(item.key == 'anime' && item.currentValue) {
+          this.getAnimeDetails()
+        }
+      })
+    }
   }
 
   closeWindow() {
@@ -43,16 +57,48 @@ export class AnimeFormComponent implements OnInit {
     })
     let username = sessionStorage.getItem('username')
     if(username != null) {
-      username = username.split(' ').join('-')
-      let jsonData = localStorage.getItem(`user-${username}`)
-      let user: User = JSON.parse(jsonData!)
+      let user = this.getUser(username)
       const elements = user.favoritos.filter(element => element.anime.id == favorito.anime.id)
       if(elements.length == 0) {
         user.favoritos.push(favorito)
+      } else {
+        user.favoritos.forEach(element => {
+          if(element.anime.id == favorito.anime.id) {
+            element.endDate = favorito.endDate
+            element.nota = favorito.nota
+            element.startDate = favorito.startDate
+            element.rewatch = favorito.rewatch
+            element.progress = favorito.progress
+            element.status = favorito.status
+          }
+        })
       }
       localStorage.setItem(`user-${username}`, JSON.stringify(user))
     }
     this.closeWindow()
+  }
+
+  getUser(username: string): User {
+      username = username.split(' ').join('.')
+      const jsonData = localStorage.getItem(`user-${username}`)
+      return JSON.parse(jsonData!)
+  }
+
+  getAnimeDetails() {
+    let username = sessionStorage.getItem('username')
+    if(username != null) {
+      let user = this.getUser(username)
+      user.favoritos.forEach(element => {
+        if(element.anime.id == this.anime?.id) {
+          this.status = element.status
+          this.rewatch = element.rewatch
+          this.progress = element.progress
+          this.endDate = element.endDate
+          this.startDate = element.startDate
+          this.nota = element.nota
+        }
+      })
+    }
   }
 }
 
