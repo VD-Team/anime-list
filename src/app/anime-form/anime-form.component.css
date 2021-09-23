@@ -85,3 +85,8 @@ select {
   color: white;
   cursor: pointer;
 }
+
+#removeButton {
+  background-color: darkgray;
+  margin-right: 0.8rem;
+}

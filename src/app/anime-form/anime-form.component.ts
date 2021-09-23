@@ -21,7 +21,9 @@ export class AnimeFormComponent implements OnInit {
   endDate: Date = new Date()
   progress: number = 0
   rewatch: number = 0
+  favorited = false
   private currentDate = new Date()
+  private username: string | null = null
 
   differ: KeyValueDiffer<string, any>
   constructor(private data: DataService, private differs: KeyValueDiffers) {
@@ -29,8 +31,9 @@ export class AnimeFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.username = sessionStorage.getItem('username')
   }
+
   ngDoCheck() {
     const change = this.differ.diff(this)
     if (change) {
@@ -56,9 +59,8 @@ export class AnimeFormComponent implements OnInit {
       progress: this.progress,
       rewatch: this.rewatch
     })
-    let username = sessionStorage.getItem('username')
-    if(username != null) {
-      let user = this.getUser(username)
+    if(this.username != null) {
+      let user = this.getUser(this.username)
       const elements = user.favoritos.filter(element => element.anime.id == favorito.anime.id)
       if(elements.length == 0) {
         user.favoritos.push(favorito)
@@ -74,8 +76,16 @@ export class AnimeFormComponent implements OnInit {
           }
         })
       }
-      localStorage.setItem(`user-${username}`, JSON.stringify(user))
+      localStorage.setItem(`user-${this.username}`, JSON.stringify(user))
     }
+    this.closeWindow()
+  }
+
+  removerFavorito() {
+    let user = this.getUser(this.username!)
+    const favoritos = user.favoritos.filter(element => element.anime.id != this.anime?.id)
+    user.favoritos = favoritos
+    localStorage.setItem(`user-${this.username}`, JSON.stringify(user))
     this.closeWindow()
   }
 
@@ -97,6 +107,7 @@ export class AnimeFormComponent implements OnInit {
           this.endDate = element.endDate
           this.startDate = element.startDate
           this.nota = element.nota
+          this.favorited = true
         }
       })
     }

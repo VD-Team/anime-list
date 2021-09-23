@@ -47,6 +47,7 @@
     </div>
   </div>
   <div class="button-content">
+    <button (click)="removerFavorito()" [hidden]="!favorited" id="removeButton">Remover</button>
     <button (click)="salvarFavorito()">Favoritar</button>
   </div>
 </div>
