@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AnimeDetail } from '../anime-info-page/anime-info-page.component';
 
 @Component({
   selector: 'app-anime-form-background',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnimeFormBackgroundComponent implements OnInit {
 
+  @Input()
+  anime: AnimeDetail | undefined
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

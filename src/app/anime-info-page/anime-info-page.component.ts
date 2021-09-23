@@ -10,7 +10,7 @@ import { DataService } from '../services/data.service';
 })
 export class AnimeInfoPageComponent implements OnInit, OnDestroy {
 
-  anime: Anime | undefined
+  anime: AnimeDetail | undefined
   id: number | undefined
   hasTrailer: boolean = false
   hasFavoriteForm: boolean = true
@@ -38,13 +38,13 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
     if(myJson.error) {
       await this.router.navigate(['**']);
     }
-    this.anime = new Anime(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url))
+    this.anime = new AnimeDetail(myJson, this.sanitizer.bypassSecurityTrustResourceUrl(myJson.trailer_url))
     this.hasTrailer = myJson.trailer_url != null
   }
 }
 
 //ANIME RECEBIDO PELA API
-class Anime {
+export class AnimeDetail {
   aired: Aired
   airing: boolean
   duration: string

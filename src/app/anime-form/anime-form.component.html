@@ -1,46 +1,52 @@
 <div class="container">
   <div class="top">
     <div class="anime-form__header">
-      <img src="./assets/animes-images/naruto.jpg" alt="">
+      <img [src]="anime?.image_url" alt="">
     </div>
     <button (click)="closeWindow()">X</button>
   </div>
   <div class="anime-form__forms">
     <div class="anime-form__status">
-      <form>
-        <label for="status" id="status">Status</label><br>
-        <input type="number" name="status"><br>
-      </form>
+      <label for="status" id="status">Status</label><br>
+        <select name="status" [(ngModel)]="status">
+          <option [ngValue]="null" disabled></option>
+          <option *ngFor="let status of defaultStatus" [ngValue]="status">
+            {{ status }}
+          </option>
+        </select>
     </div>
     <div class="anime-form__rate">
       <form>
         <label for="rate" id="rate">Nota</label><br>
-        <input type="number" name="rate"><br>
+        <input type="number" name="rate" min="0" max="10" [(ngModel)]="nota"><br>
       </form>
     </div>
     <div class="anime-form__progress">
       <form>
         <label for="progress" id="progress">Progresso de episódio</label><br>
-        <input type="number" name="progress"><br>
+        <input type="number" name="progress" [(ngModel)]="progress"><br>
       </form>
     </div>
     <div class="anime-form__startDate">
       <form>
         <label for="startDate" id="startDate">Data de início</label><br>
-        <input type="number"  name="startDate"><br>
+        <input type="date" name="startDate" [(ngModel)]="startDate"><br>
       </form>
     </div>
     <div class="anime-form__endDate">
       <form>
         <label for="endDate" id="endDate">Data de término</label><br>
-        <input type="number" name="endDate"><br>
+        <input type="date" name="endDate" [(ngModel)]="endDate"><br>
       </form>
     </div>
     <div class="anime-form__rewatch">
       <form>
         <label for="rewatch" id="rewatch">Vezes reassistidas</label><br>
-        <input type="number" name="rewatch"><br>
+        <input type="number" name="rewatch" min="0" [(ngModel)]="rewatch"><br>
       </form>
     </div>
+  </div>
+  <div class="button-content">
+    <button (click)="salvarFavorito()">Favoritar</button>
   </div>
 </div>
