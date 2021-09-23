@@ -183,7 +183,7 @@
 
 .page-info-anime__likeButton{
   position: absolute;
-  right: 195px;
+  right: 150px;
   width: 2rem;
   height: 2rem;
   border: none;
@@ -208,12 +208,12 @@
 }
 
 .page-info-anime__openingCards{
-  margin-left: 120px;
+  margin-left: 165px;
   display: inline-table;
 }
 
 .page-info-anime__endingCards{
-  margin-left: 140px;
+  margin-left: 165px;
   display: inline-table;
 }
 
