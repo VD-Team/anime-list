@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, OnInit, Pipe, PipeTransform, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { HeaderComponent } from '../../general';
 @Pipe({ name: 'searchFilter' })
 export class FilterPipe implements PipeTransform {
   /**
@@ -31,37 +30,72 @@ export class FilterPipe implements PipeTransform {
 })
 export class PageHomeComponent implements OnInit, AfterViewInit {
 
-  animes: Anime[] = []
+  popularAnimes: Anime[] = []
+  releasingAnimes: Anime[] = []
+  topAnimes: Anime[] = []
+  nextSeasonAnimes: Anime[] = []
+
+  apiPopularAnimes: string = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&limit=5&order_by=score&sort=desc'
+  apiReleasingAnimes: string = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&limit=5&order_by=start_date&status=airing&&sort=desc'
+  apiTopAnimes: string = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&limit=5&order_by=score&genre=1&sort=desc'
+  apiNextSeasonAnimes: string = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&limit=5&order_by=&status=upcoming&genre=1&sort=desc'
 
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    this.data.currentMessage.subscribe(message => { 
+    this.data.currentMessage.subscribe(message => {
       let messageText = message
       console.log(messageText)
       if(messageText.length > 2) {
         this.searchAnimesByName(message)
       } else {
-        this.searchAnimes()
+        this.searchAnimes(this.apiPopularAnimes, "popular")
+        this.searchAnimes(this.apiReleasingAnimes, "releasing")
+        this.searchAnimes(this.apiTopAnimes, "top")
+        this.searchAnimes(this.apiNextSeasonAnimes, "season")
       }
     })
   }
 
-  async searchAnimes(): Promise<void> {
-    const response = await fetch('https://api.jikan.moe/v3/search/anime?type=tv&order_by=score&descending');
+  async searchAnimes(requisicao: string, type: string): Promise<void> {
+    const response = await fetch(requisicao);
     const myJson = await response.json();
-    this.animes = []
-    for (const animeResult of myJson.results) {
-      this.animes.push(new Anime(animeResult))
+    switch (type){
+      case "popular":
+        this.popularAnimes = []
+        for (const animeResult of myJson.results) {
+          this.popularAnimes.push(new Anime(animeResult))
+        }
+        break
+      case "releasing":
+        this.releasingAnimes = []
+        for (const animeResult of myJson.results) {
+          this.releasingAnimes.push(new Anime(animeResult))
+        }
+        break
+      case "top":
+        this.topAnimes = []
+        for (const animeResult of myJson.results) {
+          this.topAnimes.push(new Anime(animeResult))
+        }
+        break
+      case "season":
+        this.nextSeasonAnimes = []
+        for (const animeResult of myJson.results) {
+          this.nextSeasonAnimes.push(new Anime(animeResult))
+        }
+        break
+      default:
+        break
     }
   }
 
   async searchAnimesByName(animeName: string): Promise<void> {
     const response = await fetch(`https://api.jikan.moe/v3/search/anime?q=${animeName}&page=1&type=tv`);
     const myJson = await response.json();
-    this.animes = []
+    this.popularAnimes = []
     for (const animeResult of myJson.results) {
-      this.animes.push(new Anime(animeResult))
+      this.popularAnimes.push(new Anime(animeResult))
     }
   }
 
