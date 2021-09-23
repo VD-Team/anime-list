@@ -45,6 +45,8 @@ export class AnimeInfoPageComponent implements OnInit, OnDestroy {
 
 //ANIME RECEBIDO PELA API
 export class AnimeDetail {
+
+  id: number
   aired: Aired
   airing: boolean
   duration: string
@@ -70,6 +72,7 @@ export class AnimeDetail {
   status: string
 
   constructor(json: any, trailer_url: SafeResourceUrl) {
+    this.id = json.id
     this.airing = json.airing
     this.title = json.title
     this.image_url = json.image_url

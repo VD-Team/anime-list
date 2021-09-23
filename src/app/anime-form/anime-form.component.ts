@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AnimeDetail } from '../anime-info-page/anime-info-page.component';
+import { User } from '../components/pages';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -40,7 +41,17 @@ export class AnimeFormComponent implements OnInit {
       progress: this.progress,
       rewatch: this.rewatch
     })
-    //Push the new favorite
+    let username = sessionStorage.getItem('username')
+    if(username != null) {
+      username = username.split(' ').join('-')
+      let jsonData = localStorage.getItem(`user-${username}`)
+      let user: User = JSON.parse(jsonData!)
+      const elements = user.favoritos.filter(element => element.anime.id == favorito.anime.id)
+      if(elements.length == 0) {
+        user.favoritos.push(favorito)
+      }
+      localStorage.setItem(`user-${username}`, JSON.stringify(user))
+    }
     this.closeWindow()
   }
 }
