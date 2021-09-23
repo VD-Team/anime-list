@@ -47,6 +47,7 @@ export class AnimeFormComponent implements OnInit {
   }
 
   salvarFavorito() {
+    console.log(this.startDate)
     const favorito = new Favorito(this.anime!, {
       status: this.status,
       nota: this.nota,

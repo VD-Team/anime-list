@@ -30,13 +30,13 @@
     <div class="anime-form__startDate">
       <form>
         <label for="startDate" id="startDate">Data de início</label><br>
-        <input type="date" name="startDate" [(ngModel)]="startDate"><br>
+        <input type="date" name="startDate" [ngModel]="startDate | date:'yyyy-MM-dd'" (ngModelChange)="startDate = $event"><br>
       </form>
     </div>
     <div class="anime-form__endDate">
       <form>
         <label for="endDate" id="endDate">Data de término</label><br>
-        <input type="date" name="endDate" [(ngModel)]="endDate"><br>
+        <input type="date" name="endDate" [ngModel]="endDate | date:'yyyy-MM-dd'" (ngModelChange)="endDate = $event"><br>
       </form>
     </div>
     <div class="anime-form__rewatch">
