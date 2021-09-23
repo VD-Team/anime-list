@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Favorito } from 'src/app/anime-form/anime-form.component';
 import { Anime } from '..';
 
 @Component({
@@ -54,9 +55,9 @@ export class PagePerfilComponent implements OnInit {
   }
 }
 
-class User {
+export class User {
   
-  favoritos: Anime[] = []
+  favoritos: Favorito[] = []
 
   avatar_url: string
   id: number
@@ -68,16 +69,6 @@ class User {
     this.id = json.id ?? 0
     this.login = json.login ?? username
     this.name = json.name ?? this.login
-    this.getFavoritos(json.favoritos)
-  }
-
-  getFavoritos(favoritos: any) {
-    if(!favoritos) {
-      return
-    }
-    this.favoritos = []
-    for (const favorito of favoritos) {
-      this.favoritos.push(new Anime(favorito))
-    }
+    this.favoritos = json.favoritos ?? []
   }
 }
