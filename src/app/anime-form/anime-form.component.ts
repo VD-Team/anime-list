@@ -15,7 +15,7 @@ export class AnimeFormComponent implements OnInit {
   anime: AnimeDetail | undefined
 
   defaultStatus = ['Assistido', 'Acompanhando', 'Quero assistir']
-  status: string | null = null
+  status: string = 'Quero assistir'
   nota: number = 0
   startDate: Date = new Date()
   endDate: Date = new Date()
@@ -117,7 +117,7 @@ export class AnimeFormComponent implements OnInit {
 export class Favorito {
   
   anime: AnimeDetail
-  status: string | null
+  status: string
   nota: number
   startDate: Date
   endDate: Date
