@@ -9,7 +9,6 @@
     <div class="anime-form__status">
       <label for="status" id="status">Status</label><br>
         <select name="status" [(ngModel)]="status">
-          <option [ngValue]="null" disabled></option>
           <option *ngFor="let status of defaultStatus" [ngValue]="status">
             {{ status }}
           </option>
