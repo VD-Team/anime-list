@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { DataService } from './services/data.service';
 import { AnimeFormComponent } from './anime-form/anime-form.component';
 import { AnimeFormBackgroundComponent } from './anime-form-background/anime-form-background.component';
+import { AllAnimesComponent } from './all-animes/all-animes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AnimeFormBackgroundComponent } from './anime-form-background/anime-form
     PagePerfilComponent,
     FilterPipe,
     AnimeFormComponent,
-    AnimeFormBackgroundComponent
+    AnimeFormBackgroundComponent,
+    AllAnimesComponent
   ],
   imports: [
     BrowserModule,

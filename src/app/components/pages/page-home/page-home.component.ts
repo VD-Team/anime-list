@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import {Router} from "@angular/router";
 @Pipe({ name: 'searchFilter' })
 export class FilterPipe implements PipeTransform {
   /**
@@ -30,6 +31,8 @@ export class FilterPipe implements PipeTransform {
 })
 export class PageHomeComponent implements OnInit, AfterViewInit {
 
+  requisitionType: string = 'popular'
+
   popularAnimes: Anime[] = []
   releasingAnimes: Anime[] = []
   topAnimes: Anime[] = []
@@ -40,7 +43,7 @@ export class PageHomeComponent implements OnInit, AfterViewInit {
   apiTopAnimes: string = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&limit=5&order_by=score&genre=1&sort=desc'
   apiNextSeasonAnimes: string = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&limit=5&order_by=&status=upcoming&genre=1&sort=desc'
 
-  constructor(private data: DataService) { }
+  constructor(private data: DataService, private router: Router) { }
 
   ngOnInit(): void {
     this.data.currentMessage.subscribe(message => {
@@ -56,6 +59,15 @@ export class PageHomeComponent implements OnInit, AfterViewInit {
       }
     })
   }
+
+  goToPage(name: string): void{
+    if(this.requisitionType) {
+      this.router.navigate([`${name}`, this.requisitionType]);
+    } else {
+      console.log("Erro")
+    }
+  }
+
 
   async searchAnimes(requisicao: string, type: string): Promise<void> {
     const response = await fetch(requisicao);

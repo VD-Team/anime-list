@@ -1,0 +1,22 @@
+.page-all-animes__cards{
+  margin-top: 5px;
+  max-width: 1000px;
+  display: flex;
+  margin-left: 190px;
+  margin-right: 190px;
+  padding-top: 5px;
+  flex-wrap: wrap;
+}
+
+.content{
+  justify-content: center;
+  display: flex;
+  min-height: 95vh;
+}
+
+h4{
+  margin-left: 270px;
+  color: #63788F;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}

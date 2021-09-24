@@ -5,7 +5,7 @@
     <div class="page-home__popular">
       <div class="page-home__top">
         <h4>POPULAR</h4>
-        <button>VER TODOS</button>
+        <button (click)="goToPage('allAnimes')">VER TODOS</button>
       </div>
       <div class="page-home__cards">
         <app-anime-card *ngFor="let anime of popularAnimes | searchFilter: ''" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
@@ -15,7 +15,7 @@
     <div class="page-home__releasing">
       <div class="page-home__top">
         <h4>RELEASING</h4>
-        <button>VER TODOS</button>
+        <button (click)="goToPage('allAnimes')">VER TODOS</button>
       </div>
       <div class="page-home__cards">
         <app-anime-card *ngFor="let anime of releasingAnimes | searchFilter: ''" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
@@ -25,7 +25,7 @@
     <div class="page-home__coming">
       <div class="page-home__top">
         <h4>TOP</h4>
-        <button>VER TODOS</button>
+        <button (click)="goToPage('allAnimes')">VER TODOS</button>
       </div>
       <div class="page-home__cards">
         <app-anime-card *ngFor="let anime of topAnimes | searchFilter: ''" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
@@ -35,7 +35,7 @@
     <div class="page-home__next-season">
       <div class="page-home__top">
         <h4>NEXT SEASON</h4>
-        <button>VER TODOS</button>
+        <button (click)="goToPage('allAnimes')">VER TODOS</button>
       </div>
       <div class="page-home__cards">
         <app-anime-card *ngFor="let anime of nextSeasonAnimes | searchFilter: ''" [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
