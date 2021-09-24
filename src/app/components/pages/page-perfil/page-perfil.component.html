@@ -2,16 +2,13 @@
 <ng-container *ngIf="username != null else loginTemplate">
     <div class="content">
         <div class="profile">
-            <img [src]="user?.avatar_url">
+            <img class="profile-img" alt="Profile Image" [src]="user?.avatar_url">
             <div class="infos">
-                <span class="label">Username</span>
                 <span class="info" id="login-info">{{user?.login}}</span>
-                <span class="label">Nome</span>
-                <span class="info">{{user?.name}}</span>
             </div>
         </div>
         <div class="favoritos">
-            <h1>Favoritos</h1>
+            <h3>Favoritos</h3>
             <div class="cards">
                 <app-anime-card *ngFor="let favorito of user?.favoritos" [title] = "favorito.anime.title" [image_url] = "favorito.anime.image_url" [animeId]="favorito.anime.id"></app-anime-card>
             </div>
@@ -19,12 +16,18 @@
     </div>
 </ng-container>
 <ng-template #loginTemplate>
+  <div class="page-content">
+    <h2 class="login-title">Login com GitHub</h2>
     <div class="login-content" #loginTemplate>
-        <div class="forms">
-            <label for="login">Username do GitHub</label>
-            <input type="text" id="login" name="login" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
-            <button type="submit" (click)="logar()" [disabled]="!canLogin">Logar</button>
-        </div>
+      <div class="forms">
+        <h3>Login</h3>
+        <input type="text" id="login" name="login" placeholder="Nome de usuário" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
+        <button type="submit" (click)="logar()" [disabled]="!canLogin">Login</button>
+        <p class="login-create-account">Não registrado?
+          <a href="https://github.com/login">Crie uma conta</a>
+        </p>
+      </div>
     </div>
+  </div>
 </ng-template>
 <app-footer></app-footer>
