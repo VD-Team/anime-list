@@ -1,8 +1,10 @@
 <app-header></app-header>
-  <h4>POPULAR</h4>
-  <div class="content">
-    <div class="page-all-animes__cards">
-      <app-anime-card *ngFor="let anime of animes " [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
+  <div class="top">
+    <div class="content">
+      <h4>{{title}}</h4>
+      <div class="page-all-animes__cards">
+        <app-anime-card *ngFor="let anime of animes " [title] = "anime.title" [image_url] = "anime.image_url" [animeId]="anime.id"></app-anime-card>
+      </div>
     </div>
   </div>
 <app-footer></app-footer>

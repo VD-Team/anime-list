@@ -29,9 +29,10 @@ export class FilterPipe implements PipeTransform {
   templateUrl: './page-home.component.html',
   styleUrls: ['./page-home.component.css']
 })
+
 export class PageHomeComponent implements OnInit, AfterViewInit {
 
-  requisitionType: string = 'popular'
+  requisitionType: number = 0
 
   popularAnimes: Anime[] = []
   releasingAnimes: Anime[] = []
@@ -61,13 +62,9 @@ export class PageHomeComponent implements OnInit, AfterViewInit {
   }
 
   goToPage(name: string): void{
-    if(this.requisitionType) {
-      this.router.navigate([`${name}`, this.requisitionType]);
-    } else {
-      console.log("Erro")
-    }
+    console.log(this.requisitionType)
+    this.router.navigate([`${name}`, this.requisitionType]);
   }
-
 
   async searchAnimes(requisicao: string, type: string): Promise<void> {
     const response = await fetch(requisicao);

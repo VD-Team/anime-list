@@ -12,7 +12,9 @@ export class AllAnimesComponent implements OnInit {
   animes: Anime[] = []
   hasTrailer: boolean = false
 
-  requisitionType: string | undefined
+  requisitionType: number | undefined
+
+  title: string = ""
 
   requisicao: string = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&order_by=score&sort=desc'
 
@@ -24,15 +26,19 @@ export class AllAnimesComponent implements OnInit {
     this.searchAnimes()
   }
 
-  chooseRequisition(requisitionType: string): string{
+  chooseRequisition(requisitionType: number): string{
     switch (requisitionType){
-      case "Popular":
+      case 0:
+        this.title = "POPULAR"
         return this.requisicao = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&order_by=score&sort=desc'
-      case "Releasing":
+      case 1:
+        this.title = "RELEASING"
         return this.requisicao = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&order_by=start_date&status=airing&&sort=desc'
-      case "Top":
+      case 2:
+        this.title = "TOP"
         return this.requisicao = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&order_by=score&genre=1&sort=desc'
-      case "NextSeason":
+      case 3:
+        this.title = "NEXT SEASON"
         return this.requisicao = 'https://api.jikan.moe/v3/search/anime?q=&type=tv&order_by=&status=upcoming&genre=1&sort=desc'
       default:
         return ''
@@ -40,11 +46,11 @@ export class AllAnimesComponent implements OnInit {
   }
 
   async searchAnimes(): Promise<void> {
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.requisitionType = +params['requisitionType'];
-    // });
+    this.sub = this.route.params.subscribe(params => {
+      this.requisitionType = +params['requisitionType'];
+    });
 
-    const response = await fetch(this.chooseRequisition("Top"));
+    const response = await fetch(this.chooseRequisition(this.requisitionType ?? -1));
     const myJson = await response.json();
     this.animes = []
     for (const animeResult of myJson.results) {
