@@ -9,6 +9,7 @@ const routes: Routes = [
     {path: 'home', component: PageHomeComponent},
     {path: 'perfil', component: PagePerfilComponent},
     {path: 'animeInfoPage/:id', component: AnimeInfoPageComponent},
+    {path: 'allAnimes', component: AllAnimesComponent},
     {path: 'allAnimes/:requisitionType', component: AllAnimesComponent},
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'page-not-found', component: PageNotFoundComponent},

@@ -31,7 +31,7 @@ export class FilterPipe implements PipeTransform {
 })
 export class PageHomeComponent implements OnInit, AfterViewInit {
 
-  requisitionType: string = 'popular'
+  requisitionType: string = "Popular"
 
   popularAnimes: Anime[] = []
   releasingAnimes: Anime[] = []
@@ -67,7 +67,6 @@ export class PageHomeComponent implements OnInit, AfterViewInit {
       console.log("Erro")
     }
   }
-
 
   async searchAnimes(requisicao: string, type: string): Promise<void> {
     const response = await fetch(requisicao);

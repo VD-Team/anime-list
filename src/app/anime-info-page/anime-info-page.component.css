@@ -42,7 +42,7 @@
 /* SINOPSE */
 
 .page-info-anime__synopsisGroup{
-  min-width: 700px;
+  min-width: 805px;
   padding: 0 15px 0 15px;
   background-color: #FFFFFF;
   margin-left: 10px;
@@ -184,7 +184,7 @@
 
 .page-info-anime__likeButton{
   position: absolute;
-  right: 150px;
+  right: 190px;
   width: 2rem;
   height: 2rem;
   border: none;

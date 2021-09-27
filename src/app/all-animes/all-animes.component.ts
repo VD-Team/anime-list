@@ -40,9 +40,9 @@ export class AllAnimesComponent implements OnInit {
   }
 
   async searchAnimes(): Promise<void> {
-    // this.sub = this.route.params.subscribe(params => {
-    //   this.requisitionType = +params['requisitionType'];
-    // });
+    this.sub = this.route.params.subscribe(params => {
+      console.log("AQUIIII" + params)
+    });
 
     const response = await fetch(this.chooseRequisition("Top"));
     const myJson = await response.json();
