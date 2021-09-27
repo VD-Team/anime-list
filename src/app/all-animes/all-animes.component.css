@@ -2,20 +2,24 @@
   margin-top: 5px;
   max-width: 1000px;
   display: flex;
-  margin-left: 190px;
-  margin-right: 190px;
   padding-top: 5px;
   flex-wrap: wrap;
 }
 
-.content{
-  justify-content: center;
+.top{
   display: flex;
+  justify-content: center;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   min-height: 95vh;
 }
 
 h4{
-  margin-left: 270px;
+  padding-left: 10px;
   color: #63788F;
   font-family: 'Open Sans', sans-serif;
   font-weight: bolder;
