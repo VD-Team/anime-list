@@ -17,15 +17,30 @@
 </ng-container>
 <ng-template #loginTemplate>
   <div class="page-content">
-    <h2 class="login-title">Login com GitHub</h2>
     <div class="login-content" #loginTemplate>
-      <div class="forms">
+      <div class="forms" id="loginForm">
         <h3>Login</h3>
-        <input type="text" id="login" name="login" placeholder="Nome de usuário" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
+        <input type="text" id="" name="" placeholder="E-mail" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
+        <input type="text" id="" name="" placeholder="Senha" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
         <button type="submit" (click)="logar()" [disabled]="!canLogin">Login</button>
-        <p class="login-create-account">Não registrado?
-          <a href="https://github.com/login">Crie uma conta</a>
-        </p>
+      </div>
+      <div class="forms">
+        <h3>Cadastro</h3>
+        <input type="text" id="" name="" placeholder="Nome" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
+        <input type="text" id="" name="" placeholder="E-mail" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
+        <input type="text" id="" name="" placeholder="Senha" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
+        <input type="text" id="" name="" placeholder="Confirmar senha" [(ngModel)]="inputText" (ngModelChange)="validateInput()">
+        <select name="status" [(ngModel)]="status">
+          <option hidden value="" disabled selected>Selecione seu sexo</option>
+          <option *ngFor="let status of defaultStatus" [ngValue]="status">
+            {{ status }}
+          </option>
+        </select>
+        <div class="receive-emails">
+          <input type="checkbox" class="checkbox">
+          <p>Desejo receber e-mails de confirmação</p>
+        </div>
+        <button type="submit" (click)="logar()" [disabled]="!canLogin">Cadastrar</button>
       </div>
     </div>
   </div>

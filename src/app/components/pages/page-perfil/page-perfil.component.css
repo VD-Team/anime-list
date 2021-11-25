@@ -63,6 +63,13 @@ span.info {
     align-self: center;
 }
 
+p {
+  color: #63788F;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+  align-self: center;
+}
+
 h3 {
     color: #63788F;
     font-family: 'Open Sans', sans-serif;
@@ -84,15 +91,15 @@ h2 {
 }
 
 .page-content{
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
+  background: url(src/assets/your-name.png) no-repeat;
 }
 
 .login-content {
   min-height: 95vh;
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
@@ -114,21 +121,21 @@ h2 {
   margin-bottom: 1.5rem;
 }
 
-.login-create-account{
+select {
+  background-color: #FFFFFF;
+  appearance: none;
+  border: 0 solid transparent;
   color: #63788F;
-  display: flex;
-  justify-content: center;
-  font-family: 'Open Sans', sans-serif;
+  outline: none;
+  border-radius: 0.3rem;
+  height: 2.2rem;
+  width: 20rem;
+  padding-left: 10px;
   font-size: small;
-  font-weight: normal;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
   margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.login-create-account a{
-  padding-left: 5px;
-  text-decoration: none;
-  color: #FF434D;
+  cursor: pointer;
 }
 
 .forms input[type=text] {
@@ -157,11 +164,35 @@ h2 {
   border-radius: 0.3rem;
   height: 2.5rem;
   width: 30%;
+  margin-bottom: 1.5rem;
   font-size: medium;
   align-self: center;
+}
+
+#loginForm {
+  margin-right: 4rem;
+}
+
+.checkbox {
+  margin-left: 1.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox:checked{
+  margin-left: 1.5rem;
+  margin-right: 0.5rem;
+  border: 0 solid;
+  background-color: #FF434D;
+  cursor: pointer;
 }
 
 .forms button:enabled {
     transition: 200ms;
     background-color: #FF434D;
+}
+
+.receive-emails{
+  display: flex;
+  align-items: center;
 }

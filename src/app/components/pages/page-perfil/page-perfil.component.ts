@@ -14,6 +14,10 @@ export class PagePerfilComponent implements OnInit {
   inputText: string = ''
   canLogin: boolean = false
 
+  //Sexo
+  defaultStatus = ['Masculino', 'Feminino', 'Não quero informar']
+  status: string = ''
+
   constructor() { }
 
   ngOnInit(): void {
