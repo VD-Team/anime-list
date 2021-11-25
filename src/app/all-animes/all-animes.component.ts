@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {AnimeDetail} from "../anime-info-page/anime-info-page.component";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Anime} from "../components/pages";
 
