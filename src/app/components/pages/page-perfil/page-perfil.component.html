@@ -1,4 +1,22 @@
 <app-header [button]="'perfil'"></app-header>
+
+<ng-container *ngIf="user else loginTemplate">
+  <div class="content">
+      <div class="profile">
+          <img class="profile-img" alt="Profile Image" [src]="user?.avatar_url">
+          <div class="infos">
+              <span class="info" id="login-info">{{email}}</span>
+          </div>
+      </div>
+      <div class="favoritos">
+          <h3>Favoritos</h3>
+          <div class="cards">
+              <app-anime-card *ngFor="let favorito of user?.favoritos" [title] = "favorito.anime.title" [image_url] = "favorito.anime.image_url" [animeId]="favorito.anime.id"></app-anime-card>
+          </div>
+      </div>
+  </div>
+</ng-container>
+<ng-template #loginTemplate>
   <div class="page-content">
     <div class="login-content">
       <div class="forms" id="loginForm">
@@ -27,4 +45,5 @@
       </div>
     </div>
   </div>
+</ng-template>
 <app-footer></app-footer>

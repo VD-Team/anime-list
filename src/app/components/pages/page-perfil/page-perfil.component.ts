@@ -30,32 +30,11 @@ export class PagePerfilComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    // this.username = sessionStorage.getItem('username')
-    // if(this.username != null) {
-    //   this.getUserInfo()
-    // }
+    let userData = sessionStorage.getItem('user')
+    if(userData != null) {
+      this.user = new User(JSON.parse(userData))
+    }
   }
-
-  // async getUser(): Promise<void> {
-  //   const username = this.username?.split(' ').join('-')
-  //   fetch(`https://api.github.com/users/${this.username}`)
-  //   .then(response => response.json())
-  //   .then(json => {
-  //     this.user = new User(json, this.username!)
-  //     localStorage.setItem(`user-${username}`, JSON.stringify(this.user))
-  //   })
-  //   .catch(err => console.log(err))
-  // }
-
-  // getUserInfo() {
-  //   const username = this.username?.split(' ').join('-')
-  //   let userData = localStorage.getItem(`user-${username}`)
-  //   if(userData == null) {
-  //     this.getUser()
-  //   } else {
-  //     this.user = new User(JSON.parse(userData), this.username!)
-  //   }
-  // }
 
   logar() {
     let user = {
@@ -69,6 +48,7 @@ export class PagePerfilComponent implements OnInit {
       if (response && !response.data.error){
         this.loginEmail = ''
         this.loginPassword = ''
+        this.saveUser(response.data)
       }
     })
   }
@@ -92,7 +72,7 @@ export class PagePerfilComponent implements OnInit {
         this.genre = ''
         this.password = ''
         this.rePassword = ''
-        this.router.navigate(['home']);
+        this.saveUser(response.data)
       }
     })
   }
@@ -108,6 +88,11 @@ export class PagePerfilComponent implements OnInit {
 
   validateLogin(){
     this.canLogin = this.loginEmail.length >= 3
+  }
+
+  private saveUser(data: any) {
+    this.user = new User(data)
+    sessionStorage.setItem('user', JSON.stringify(this.user))
   }
 
 }
