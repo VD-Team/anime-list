@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Favorito } from 'src/app/anime-form/anime-form.component';
 import  axios  from 'axios';
 import { Anime } from '..';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-perfil',
@@ -26,7 +27,7 @@ export class PagePerfilComponent implements OnInit {
   //Sexo
   defaultGenre = ['Masculino', 'Feminino', 'Não quero informar']
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     // this.username = sessionStorage.getItem('username')
@@ -91,6 +92,7 @@ export class PagePerfilComponent implements OnInit {
         this.genre = ''
         this.password = ''
         this.rePassword = ''
+        this.router.navigate(['home']);
       }
     })
   }
@@ -116,14 +118,15 @@ export class User {
 
   avatar_url: string
   id: number
-  login: string
   name: string
+  email: string
+  password: string
 
-  constructor(json: any, username: string) {    
-    this.avatar_url = json.avatar_url ?? 'assets/default-avatar.png'
+  constructor(json: any) {    
+    this.avatar_url = 'assets/default-avatar.png'
     this.id = json.id ?? 0
-    this.login = json.login ?? username
-    this.name = json.name ?? this.login
-    this.favoritos = json.favoritos ?? []
+    this.name = json.name
+    this.email = json.email
+    this.password = json.password
   }
 }
