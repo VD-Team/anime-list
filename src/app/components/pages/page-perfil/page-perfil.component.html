@@ -11,7 +11,7 @@
       <div class="favoritos">
           <h3>Favoritos</h3>
           <div class="cards">
-              <app-anime-card *ngFor="let favorito of user?.favoritos" [title] = "favorito.anime.title" [image_url] = "favorito.anime.image_url" [animeId]="favorito.anime.id"></app-anime-card>
+              <app-anime-card *ngFor="let favorito of user?.favoritos" [title] = "favorito.title" [image_url] = "favorito.image_url" [animeId]="favorito.id"></app-anime-card>
           </div>
       </div>
   </div>
