@@ -9,10 +9,10 @@
       </div>
       <div class="forms">
         <h3>Cadastro</h3>
-        <input type="text" id="" name="" placeholder="Nome" [(ngModel)]="name" (ngModelChange)="validateInput()">
-        <input type="text" id="" name="" placeholder="E-mail" [(ngModel)]="email" (ngModelChange)="validateInput()">
-        <input type="text" id="" name="" placeholder="Senha" [(ngModel)]="password" (ngModelChange)="validateInput()">
-        <input type="text" id="" name="" placeholder="Confirmar senha" [(ngModel)]="rePassword" (ngModelChange)="validateInput()">
+        <input type="text" id="" name="" placeholder="Nome" [(ngModel)]="name" (ngModelChange)="validateRegister()">
+        <input type="text" id="" name="" placeholder="E-mail" [(ngModel)]="email" (ngModelChange)="validateRegister()">
+        <input type="text" id="" name="" placeholder="Senha" [(ngModel)]="password" (ngModelChange)="validateRegister()">
+        <input type="text" id="" name="" placeholder="Confirmar senha" [(ngModel)]="rePassword" (ngModelChange)="validateRegister()">
         <select name="genre" [(ngModel)]="genre">
           <option hidden value="" disabled selected>Selecione seu sexo</option>
           <option *ngFor="let sexo of defaultGenre" [ngValue]="sexo">
@@ -23,7 +23,7 @@
           <input type="checkbox" class="checkbox" [(ngModel)]="confirmation" (ngModelChange)="markCheckbox()">
           <p>Desejo receber e-mails de confirmação</p>
         </div>
-        <button type="submit" (click)="registrar()" [disabled]="!canLogin">Cadastrar</button>
+        <button type="submit" (click)="registrar()" [disabled]="!canRegister">Cadastrar</button>
       </div>
     </div>
   </div>

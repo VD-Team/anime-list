@@ -22,6 +22,7 @@ export class PagePerfilComponent implements OnInit {
   genre: string = ''
 
   canLogin: boolean = false
+  canRegister: boolean = false
 
   //Sexo
   defaultGenre = ['Masculino', 'Feminino', 'Não quero informar']
@@ -96,12 +97,11 @@ export class PagePerfilComponent implements OnInit {
   }
 
   markCheckbox(){
-    console.log(this.confirmation)
     this.confirmation = !this.confirmation
   }
 
-  validateInput() {
-    this.canLogin = this.name.length >= 3
+  validateRegister() {
+    this.canRegister = this.name.length >= 3
   }
 
   validateLogin(){
