@@ -1,18 +1,36 @@
 <app-header [button]="'perfil'"></app-header>
+
+<ng-container *ngIf="user else loginTemplate">
+  <div class="content">
+      <div class="profile">
+          <img class="profile-img" alt="Profile Image" [src]="user?.avatar_url">
+          <div class="infos">
+              <span class="info" id="login-info">{{email}}</span>
+          </div>
+      </div>
+      <div class="favoritos">
+          <h3>Favoritos</h3>
+          <div class="cards">
+              <app-anime-card *ngFor="let favorito of favoritos" [title] = "favorito.title" [image_url] = "favorito.image_url" [animeId]="favorito.id"></app-anime-card>
+          </div>
+      </div>
+  </div>
+</ng-container>
+<ng-template #loginTemplate>
   <div class="page-content">
     <div class="login-content">
       <div class="forms" id="loginForm">
         <h3>Login</h3>
-        <input type="text" id="" name="" placeholder="E-mail" [(ngModel)]="loginEmail" (ngModelChange)="validateLogin()">
-        <input type="text" id="" name="" placeholder="Senha" [(ngModel)]="loginPassword" (ngModelChange)="validateLogin()">
+        <input type="text" id="" placeholder="E-mail" [(ngModel)]="loginEmail" (ngModelChange)="validateLogin()">
+        <input type="password" id="" placeholder="Senha" [(ngModel)]="loginPassword" (ngModelChange)="validateLogin()">
         <button type="submit" (click)="logar()" [disabled]="!canLogin">Login</button>
       </div>
       <div class="forms">
         <h3>Cadastro</h3>
-        <input type="text" id="" name="" placeholder="Nome" [(ngModel)]="name" (ngModelChange)="validateRegister()">
-        <input type="text" id="" name="" placeholder="E-mail" [(ngModel)]="email" (ngModelChange)="validateRegister()">
-        <input type="text" id="" name="" placeholder="Senha" [(ngModel)]="password" (ngModelChange)="validateRegister()">
-        <input type="text" id="" name="" placeholder="Confirmar senha" [(ngModel)]="rePassword" (ngModelChange)="validateRegister()">
+        <input type="text" id="" placeholder="Nome" [(ngModel)]="name" (ngModelChange)="validateInput()">
+        <input type="email" id="" placeholder="E-mail" [(ngModel)]="email" (ngModelChange)="validateInput()">
+        <input type="password" id="" placeholder="Senha" [(ngModel)]="password" (ngModelChange)="validateInput()">
+        <input type="password" id="" placeholder="Confirmar senha" [(ngModel)]="rePassword" (ngModelChange)="validateInput()">
         <select name="genre" [(ngModel)]="genre">
           <option hidden value="" disabled selected>Selecione seu sexo</option>
           <option *ngFor="let sexo of defaultGenre" [ngValue]="sexo">
@@ -27,4 +45,5 @@
       </div>
     </div>
   </div>
+</ng-template>
 <app-footer></app-footer>

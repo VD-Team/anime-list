@@ -138,7 +138,7 @@ select {
   cursor: pointer;
 }
 
-.forms input[type=text] {
+.forms input[type=text], input[type=email], input[type=password]{
   background-color: #FFFFFF;
   border: 0 solid;
   color: #63788F;

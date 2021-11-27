@@ -1,4 +1,5 @@
 import { Component, Input, KeyValueDiffer, KeyValueDiffers, OnInit } from '@angular/core';
+import axios from 'axios';
 import { Observable, of, Subscription } from 'rxjs';
 import { AnimeDetail } from '../anime-info-page/anime-info-page.component';
 import { User } from '../components/pages';
@@ -23,7 +24,8 @@ export class AnimeFormComponent implements OnInit {
   rewatch: number = 0
   favorited = false
   private currentDate = new Date()
-  private username: string | null = null
+  private user: User | undefined
+  private favoritos: Favorito[] = []
 
   differ: KeyValueDiffer<string, any>
   constructor(private data: DataService, private differs: KeyValueDiffers) {
@@ -31,7 +33,7 @@ export class AnimeFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.username = sessionStorage.getItem('username')
+    this.getUser()
   }
 
   ngDoCheck() {
@@ -50,57 +52,50 @@ export class AnimeFormComponent implements OnInit {
   }
 
   salvarFavorito() {
-    console.log(this.startDate)
-    const favorito = new Favorito(this.anime!, {
-      status: this.status,
-      nota: this.nota,
-      startDate: this.startDate,
-      endDate: this.endDate,
-      progress: this.progress,
-      rewatch: this.rewatch
-    })
-    if(this.username != null) {
-      let user = this.getUser(this.username)
-      const elements = user.favoritos.filter(element => element.anime.id == favorito.anime.id)
-      if(elements.length == 0) {
-        user.favoritos.push(favorito)
-      } else {
-        user.favoritos.forEach(element => {
-          if(element.anime.id == favorito.anime.id) {
-            element.endDate = favorito.endDate
-            element.nota = favorito.nota
-            element.startDate = favorito.startDate
-            element.rewatch = favorito.rewatch
-            element.progress = favorito.progress
-            element.status = favorito.status
-          }
-        })
-      }
-      localStorage.setItem(`user-${this.username}`, JSON.stringify(user))
+    if(this.user != undefined) {
+      const favorito = new Favorito(this.anime!, {
+        status: this.status,
+        nota: this.nota,
+        startDate: this.startDate,
+        endDate: this.endDate,
+        progress: this.progress,
+        rewatch: this.rewatch
+      },
+      this.user.id)
+      console.log('Anime: ', favorito)
+      axios.post('localhost:3000/anime', favorito)
     }
     this.closeWindow()
   }
 
   removerFavorito() {
-    let user = this.getUser(this.username!)
-    const favoritos = user.favoritos.filter(element => element.anime.id != this.anime?.id)
-    user.favoritos = favoritos
-    localStorage.setItem(`user-${this.username}`, JSON.stringify(user))
+    const favoritos = this.favoritos.filter(element => element.id == this.anime?.id)
+    if (this.user != undefined && favoritos.length != 0) {
+      let favorito = favoritos[0]
+      axios.delete(`https://intense-dusk-81169.herokuapp.com/anime?userId=${this.user?.id}&id=${favorito.id}`)
+    }
     this.closeWindow()
   }
 
-  getUser(username: string): User {
-      username = username.split(' ').join('.')
-      const jsonData = localStorage.getItem(`user-${username}`)
-      return JSON.parse(jsonData!)
+  getUser(){
+      if (this.user != undefined) return
+      const jsonData = sessionStorage.getItem('user')
+      if (jsonData != null) {
+        this.user = JSON.parse(jsonData)
+        if(this.user != undefined) {
+          axios.get(`https://intense-dusk-81169.herokuapp.com/animes?userId=${this.user.id}`)
+          .then(response => {
+            this.favoritos = response.data
+          })
+        }
+      }
   }
 
   getAnimeDetails() {
-    let username = sessionStorage.getItem('username')
-    if(username != null) {
-      let user = this.getUser(username)
-      user.favoritos.forEach(element => {
-        if(element.anime.id == this.anime?.id) {
+    this.getUser
+    if(this.user != undefined) {
+      this.favoritos.forEach(element => {
+        if(element.id == this.anime?.id) {
           this.status = element.status
           this.rewatch = element.rewatch
           this.progress = element.progress
@@ -116,21 +111,27 @@ export class AnimeFormComponent implements OnInit {
 
 export class Favorito {
   
-  anime: AnimeDetail
+  id: number
+  userId: number
   status: string
   nota: number
   startDate: Date
   endDate: Date
   progress: number
   rewatch: number
+  title: string
+  image_url: string
 
-  constructor(anime: AnimeDetail, details: any) {
-    this.anime = anime
+  constructor(anime: AnimeDetail, details: any, userId: number) {
+    this.id = anime.id
+    this.userId = userId
     this.status = details.status
     this.startDate = details.startDate
     this.nota = details.nota
     this.endDate = details.endDate
     this.progress = details.progress
     this.rewatch = details.rewatch
+    this.title = anime.title
+    this.image_url = anime.image_url
   }
 }
