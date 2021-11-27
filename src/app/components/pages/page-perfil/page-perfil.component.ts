@@ -23,6 +23,7 @@ export class PagePerfilComponent implements OnInit {
   genre: string = ''
 
   canLogin: boolean = false
+  favoritos: Favorito[] = []
 
   //Sexo
   defaultGenre = ['Masculino', 'Feminino', 'Não quero informar']
@@ -92,6 +93,10 @@ export class PagePerfilComponent implements OnInit {
 
   private saveUser(data: any) {
     this.user = new User(data)
+    axios.get(`https://intense-dusk-81169.herokuapp.com/animes?userId=${this.user.id}`)
+      .then(response => {
+        this.favoritos = response.data
+      })
     sessionStorage.setItem('user', JSON.stringify(this.user))
   }
 
