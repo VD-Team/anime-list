@@ -27,10 +27,10 @@
       </div>
       <div class="forms">
         <h3>Cadastro</h3>
-        <input type="text" id="" placeholder="Nome" [(ngModel)]="name" (ngModelChange)="validateInput()">
-        <input type="email" id="" placeholder="E-mail" [(ngModel)]="email" (ngModelChange)="validateInput()">
-        <input type="password" id="" placeholder="Senha" [(ngModel)]="password" (ngModelChange)="validateInput()">
-        <input type="password" id="" placeholder="Confirmar senha" [(ngModel)]="rePassword" (ngModelChange)="validateInput()">
+        <input type="text" id="" placeholder="Nome" [(ngModel)]="name" (ngModelChange)="validateRegister()">
+        <input type="email" id="" placeholder="E-mail" [(ngModel)]="email" (ngModelChange)="validateRegister()">
+        <input type="password" id="" placeholder="Senha" [(ngModel)]="password" (ngModelChange)="validateRegister()">
+        <input type="password" id="" placeholder="Confirmar senha" [(ngModel)]="rePassword" (ngModelChange)="validateRegister()">
         <select name="genre" [(ngModel)]="genre">
           <option hidden value="" disabled selected>Selecione seu sexo</option>
           <option *ngFor="let sexo of defaultGenre" [ngValue]="sexo">
